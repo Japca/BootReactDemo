@@ -1,7 +1,7 @@
 package net.webco.controller;
 
 import net.webco.domain.Item;
-import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,6 +15,7 @@ import java.util.List;
  */
 
 @RestController
+@CrossOrigin
 public class ItemController {
 
     public ItemController() {
@@ -27,7 +28,7 @@ public class ItemController {
 
     private List<Item> items = new ArrayList<>();
 
-    @RequestMapping(path = "/items", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(path = "/items", method = RequestMethod.GET)
     public List<Item> getItems() {
         return items;
     }

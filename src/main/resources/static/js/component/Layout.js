@@ -1,14 +1,17 @@
 import React from "react";
+import Navigator from "./Navigator";
+import Content from "./Content";
+// import Table from "./Table";
+// import Card from "./Card";
+// import List from "./List";
+import {BrowserRouter as Router} from "react-router-dom";
 
-import Footer from "./Footer";
-import Header from "./Header";
-import Container from "./Container";
 
 export default class Layout extends React.Component {
   constructor() {
     super();
     this.state = {
-      title: "Ahojssssssssss22",
+      title: "Ahojss3",
     };
   }
 
@@ -18,11 +21,29 @@ export default class Layout extends React.Component {
 
   render() {
     return (
-      <div>
-        <Header changeTitle={this.changeTitle.bind(this)} title={this.state.title} />
-        <Container/>
-        <Footer />
-      </div>
+        <div>
+        <Router>
+                <div>
+                 <Navigator/>
+                <Content />
+
+                </div>
+        </Router>
+
+        </div>
     );
   }
 }
+
+const table = () => (
+    <div>
+        <p>fake table </p>
+    </div>
+);
+
+// const Home = () => (
+//     <div>
+//         <h2>Home</h2>
+//     </div>
+// )
+

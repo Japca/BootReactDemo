@@ -21,17 +21,19 @@ module.exports = {
     ]
   },
   output: {
-    path: __dirname + "/src/main/resources/static/",
+    path: __dirname + "/src/main/resources/static",
     filename: "./index.min.js"
   },
 
     devServer: {
-        // contentBase: "./public",
-        hot: true
+        hot: true,
+
+
     },
-  plugins: debug ? [] : [
-    new webpack.optimize.DedupePlugin(),
-    new webpack.optimize.OccurenceOrderPlugin(),
-    new webpack.optimize.UglifyJsPlugin({ mangle: false, sourcemap: false }),
-  ],
+    plugins: debug ? [] : [
+        new webpack.optimize.DedupePlugin(),
+        new webpack.optimize.OccurenceOrderPlugin(),
+        new webpack.optimize.UglifyJsPlugin({ mangle: false, sourcemap: false }),
+    ],
+    // devtool : 'source-map'
 };
