@@ -1,6 +1,6 @@
 import React from "react";
 import Navigator from "./Navigator";
-import Content from "./Content";
+import Content from "./Content/Content";
 // import Table from "./Table";
 // import Card from "./Card";
 // import List from "./List";
@@ -24,7 +24,7 @@ export default class Layout extends React.Component {
         <div>
         <Router>
                 <div>
-                 <Navigator/>
+                <Navigator/>
                 <Content />
 
                 </div>

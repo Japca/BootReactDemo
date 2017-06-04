@@ -3,18 +3,16 @@
  */
 
 import React from "react";
-import Table from "./Table";
-import Card from "./Card";
-import List from "./List";
+import Table from "./../Table";
+import Card from "./../Card";
+import List from "./../List";
 import {Route, Switch} from "react-router-dom";
-
 export default class Content extends React.Component {
 
 
     render() {
-
         return (
-            <div id="contnet" className="contentBackground">
+            <div id="content" class="contentBackground">
                 <Switch>
                     <Route path='/list' component={List}/>
                     <Route path='/table' component={Table}/>
