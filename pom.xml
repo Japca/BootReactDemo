@@ -21,7 +21,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
         <frondEnd-version>1.4</frondEnd-version>
-        <nodeVersion>v5.0.2</nodeVersion>
+        <nodeVersion>v4.7.0</nodeVersion>
         <npmVersion>2.15.9</npmVersion>
     </properties>
 
