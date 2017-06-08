@@ -7,6 +7,7 @@ import Content from "./Content/Content";
 import {BrowserRouter as Router} from "react-router-dom";
 
 
+
 export default class Layout extends React.Component {
   constructor() {
     super();
@@ -22,8 +23,11 @@ export default class Layout extends React.Component {
   render() {
     return (
         <div>
+
         <Router>
-                <div>
+
+               <div>
+
                 <Navigator/>
                 <Content />
 

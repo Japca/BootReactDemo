@@ -12,7 +12,7 @@ export default class Content extends React.Component {
 
     render() {
         return (
-            <div id="content" class="contentBackground">
+            <div id="content" className="ui container">
                 <Switch>
                     <Route path='/list' component={List}/>
                     <Route path='/table' component={Table}/>

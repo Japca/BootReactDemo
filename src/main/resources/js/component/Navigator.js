@@ -7,22 +7,24 @@ import {Link} from "react-router-dom";
 
 export default class Navigator extends React.Component {
 
-    render() {
+     render() {
         return (
 
-            <div id="navigator">
-                <ul>
-                    <li>
-                        <Link to="table">
+            <div id="navigator" >
+                <div class="ui secondary pointing menu">
+                </div>
+                <ul >
+                    <li class="active item">
+                        <Link to="table" >
                             <code>table</code>
                         </Link>
                     </li>
-                    <li>
-                        <Link to="list">
+                    <li class="item">
+                        <Link to="list" >
                             <code>list</code>
                         </Link>
                     </li>
-                    <li>
+                    <li class="item">
                         <Link to="card">
                             <code>cards</code>
                         </Link>
