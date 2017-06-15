@@ -14,10 +14,10 @@ export default class Content extends React.Component {
         return (
             <div id="content" className="ui container">
                 <Switch>
+                    <Route exact path='/' component={List}/>
                     <Route path='/list' component={List}/>
                     <Route path='/table' component={Table}/>
                     <Route path='/card' component={Card}/>
-                    <Route path='/' component={List}/>
                 </Switch>
             </div>
         );

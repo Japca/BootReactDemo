@@ -24,7 +24,7 @@ export default class Layout extends React.Component {
     return (
         <div>
 
-        <Router>
+        <Router >
 
                <div>
 
@@ -39,15 +39,6 @@ export default class Layout extends React.Component {
   }
 }
 
-const table = () => (
-    <div>
-        <p>fake table </p>
-    </div>
-);
 
-// const Home = () => (
-//     <div>
-//         <h2>Home</h2>
-//     </div>
-// )
+
 

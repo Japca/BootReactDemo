@@ -3,7 +3,6 @@
  */
 
 import React from "react";
-import axios from "axios";
 import {Media} from "react-bootstrap";
 export default class List extends React.Component {
 
@@ -61,23 +60,6 @@ export default class List extends React.Component {
                 </Media>
             </div>
         );
-    }
-
-    getData = () => {
-
-        return axios.get('http://localhost:8080/items')
-            .then(function (response) {
-                console.log("Response!");
-                console.log(response);
-            })
-            .catch(function (error) {
-                console.log("Error!");
-                console.log(error);
-            })
-            .then(function (response) {
-                console.log("Finally");
-                console.log(response);
-            });
     }
 
 }
