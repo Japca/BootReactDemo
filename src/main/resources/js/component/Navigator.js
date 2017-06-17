@@ -1,7 +1,3 @@
-/**
- * Created by cor on 5/28/17.
- */
-
 import React from "react";
 import {Link} from "react-router-dom";
 
@@ -22,11 +18,6 @@ export default class Navigator extends React.Component {
                     <li class="item">
                         <Link to="list" >
                             <code>list</code>
-                        </Link>
-                    </li>
-                    <li class="item">
-                        <Link to="card">
-                            <code>cards</code>
                         </Link>
                     </li>
                 </ul>

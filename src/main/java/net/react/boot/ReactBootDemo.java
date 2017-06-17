@@ -1,8 +1,8 @@
 package net.react.boot;
 
 import net.react.boot.domain.Item;
+import net.react.boot.generator.Generator;
 import net.react.boot.service.ItemService;
-import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -14,28 +14,26 @@ import javax.annotation.PostConstruct;
 @EnableJpaRepositories
 public class ReactBootDemo {
 
-    private static final int INIT_ITEM_COUNT = 10;
-
     private ItemService itemService;
+
+    private Generator<Item> generator;
 
     public static void main(String[] args) {
         SpringApplication.run(ReactBootDemo.class, args);
     }
 
     @PostConstruct
-    public void initializeData() {
-        for (int i = 0; i < INIT_ITEM_COUNT; i++) {
-            itemService.save(new Item(generate(10), generate(100), generate(50), generate(20)));
-        }
+    public void initializeData()  {
+       itemService.save(generator.generate());
     }
-
-    private String generate(int charCount) {
-        return RandomStringUtils.randomAlphabetic(charCount);
-    }
-
 
     @Autowired
     public void setItemService(ItemService itemService) {
         this.itemService = itemService;
+    }
+
+    @Autowired
+    public void setGenerator(Generator<Item> generator) {
+        this.generator = generator;
     }
 }

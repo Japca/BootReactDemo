@@ -1,11 +1,8 @@
 import React from "react";
 import Navigator from "./Navigator";
 import Content from "./Content/Content";
-// import Table from "./Table";
-// import Card from "./Card";
-// import List from "./List";
-import {BrowserRouter as Router} from "react-router-dom";
 
+import {BrowserRouter as Router} from "react-router-dom";
 
 
 export default class Layout extends React.Component {

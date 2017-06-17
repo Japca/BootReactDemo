@@ -9,6 +9,7 @@ import java.util.List;
 
 /**
  * Created by Jakub krhovják on 6/17/17.
+ *
  */
 
 @Service
@@ -23,6 +24,10 @@ public class ItemServiceImpl implements ItemService {
 
     public Item save(Item item) {
         return itemDao.save(item);
+    }
+
+    public List<Item> save(List<Item> items) {
+        return itemDao.save(items);
     }
 
     @Autowired

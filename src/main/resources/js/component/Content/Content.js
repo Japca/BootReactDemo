@@ -4,11 +4,9 @@
 
 import React from "react";
 import Table from "./../Table";
-import Card from "./../Card";
 import List from "./../List";
 import {Route, Switch} from "react-router-dom";
 export default class Content extends React.Component {
-
 
     render() {
         return (
@@ -17,7 +15,6 @@ export default class Content extends React.Component {
                     <Route exact path='/' component={List}/>
                     <Route path='/list' component={List}/>
                     <Route path='/table' component={Table}/>
-                    <Route path='/card' component={Card}/>
                 </Switch>
             </div>
         );

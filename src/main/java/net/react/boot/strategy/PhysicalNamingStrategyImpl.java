@@ -9,7 +9,7 @@ import java.util.Locale;
 /**
  * Created by Jakub krhovják (fg8y7n on 3/9/2017.
  *
- * Custom implementation for columns naming strategy to use jpa to resolve dB columns.
+ * Custom implementation for columns naming strategy. JPA use it to resolve dB columns properly.
  */
 public class PhysicalNamingStrategyImpl implements PhysicalNamingStrategy {
 

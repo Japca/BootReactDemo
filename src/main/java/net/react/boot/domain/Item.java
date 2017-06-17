@@ -1,18 +1,16 @@
 package net.react.boot.domain;
 
-import org.springframework.data.rest.core.annotation.RepositoryRestResource;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 /**
- * Created by Jakub krhovják (cor on 4/1/17.
+ * Created by Jakub krhovják  on 4/1/17.
  *
  */
 @Entity
-@RepositoryRestResource(collectionResourceRel = "items", path = "items")
+//@RepositoryRestResource(collectionResourceRel = "items", path = "items")
 public class Item {
 
     @Id
@@ -27,7 +25,8 @@ public class Item {
     public Item() {
     }
 
-    public Item(String header, String meta, String description, String extra) {
+    public Item(String itemImage, String header, String meta, String description, String extra) {
+        this.itemImage = itemImage;
         this.header = header;
         this.meta = meta;
         this.description = description;
