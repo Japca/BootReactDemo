@@ -37,6 +37,7 @@ export default class Card extends React.Component {
 
     render() {
         var items = this.state.items;
+        debugger;
 
         return (
             <div>
