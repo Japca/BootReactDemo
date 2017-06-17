@@ -1,5 +1,6 @@
 /**
  * Created by cor on 5/28/17.
+ *
  */
 
 import React from "react";
@@ -15,10 +16,9 @@ export default class Card extends React.Component {
         };
     }
 
-    loadItems = () => {
+    loadItems() {
         return axios.get('http://localhost:8080/items')
             .then(response => {
-                debugger;
                 this.setState({ items:response.data });
             })
             .catch(error => {
@@ -26,21 +26,17 @@ export default class Card extends React.Component {
                 console.log(error);
             })
             .then(response => {
-                console.log("Finally");
                 console.log(response);
             });
 
-    };
+    }
 
     componentDidMount() {
-        debugger;
         this.loadItems();
     }
 
     render() {
-        var items = this.state.items;
-        debugger;
-
+        let items = this.state.items;
         return (
             <div>
                 <Item.Group>

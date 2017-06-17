@@ -12,8 +12,8 @@ public interface Generator<T> {
 
     List<T> generate();
 
-    default String generateString(int charCount) {
-        return RandomStringUtils.randomAlphabetic(charCount);
+    default String generateString(int charCount ) {
+        return RandomStringUtils.randomAlphabetic(charCount).replaceAll("[eEaAD]", " ");
     }
 
 }

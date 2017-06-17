@@ -7,15 +7,15 @@ export default class Navigator extends React.Component {
         return (
 
             <div id="navigator" >
-                <div class="ui secondary pointing menu">
+                <div className="ui secondary pointing menu">
                 </div>
                 <ul >
-                    <li class="active item">
+                    <li className="active item">
                         <Link to="table" >
                             <code>table</code>
                         </Link>
                     </li>
-                    <li class="item">
+                    <li className="item">
                         <Link to="list" >
                             <code>list</code>
                         </Link>

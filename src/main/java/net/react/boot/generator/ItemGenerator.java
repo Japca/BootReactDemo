@@ -7,8 +7,10 @@ import org.springframework.stereotype.Component;
 
 import java.io.File;
 import java.net.URL;
-import java.util.LinkedList;
+import java.util.Arrays;
 import java.util.List;
+
+import static java.util.stream.Collectors.toList;
 
 /**
  * Created by Jakub krhovják on 6/17/17.
@@ -26,17 +28,14 @@ public class ItemGenerator implements Generator<Item> {
     @Override
     public List<Item> generate() {
         URL url = ReactBootDemo.class.getClassLoader().getResource(imagesFolder);
+        assert url != null;
         File images = new File(url.getPath());
-
-        List<Item> items = new LinkedList<>();
-        for (String imageName: images.list()) {
-            items.add(new Item(publicFolder.concat(imageName),
+        return Arrays.stream(images.list()).map(imageName -> new Item(publicFolder.concat(imageName),
                     generateString(10),
                     generateString(20),
                     generateString(200),
-                    generateString(20)));
-        }
-        return items;
+                    generateString(20))
+                ).collect(toList());
     }
 
 }
