@@ -5,8 +5,8 @@
 
 import React from "react";
 import axios from "axios";
-import {Image, Item} from "semantic-ui-react";
-import styles from "./list.css";
+import {Media} from "react-bootstrap";
+ import styles from "./list.css";
 
 export default class Card extends React.Component {
 
@@ -39,24 +39,22 @@ export default class Card extends React.Component {
     render() {
         let items = this.state.items;
         return (
-            <div>
-                <Item.Group>
+            <div className={styles.listClass}>
                     { items.map(item => {
-                        return <Item key={item.id} className={styles.itemStyle}>
-                            <Item.Image size='tiny' src={item.itemImage}/>
-                            <Item.Content className={styles.itemStyle}>
-                                <Item.Header as='a'>{item.header}</Item.Header>
-                                <Item.Meta>{item.meta}</Item.Meta>
-                                <Item.Description>
-                                    {item.description}
-                                    <Image/>
-                                </Item.Description>
-                                <Item.Extra>{item.extra}</Item.Extra>
-                            </Item.Content>
-                        </Item>
+                        return <Media key={item.id} className={styles.itemStyle}>
+                            <Media.Left>
+                             <img width={128} height={128} src={item.itemImage}/>
+                            </Media.Left>
+                            <Media.Body>
+                                <Media.Heading>{item.header}</Media.Heading>
+                                <p>{item.meta}</p>
+                                <p>{item.description}</p>
+                                <p>{item.extra}</p>
+                            </Media.Body>
+                        </Media>
                     })}
-                </Item.Group>
             </div>
         );
     }
 }
+
