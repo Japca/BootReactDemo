@@ -16,6 +16,10 @@ export default class Card extends React.Component {
         };
     }
 
+    componentDidMount() {
+        this.loadItems();
+    }
+
     loadItems() {
         return axios.get('http://localhost:8080/items')
             .then(response => {
@@ -29,10 +33,6 @@ export default class Card extends React.Component {
                 console.log(response);
             });
 
-    }
-
-    componentDidMount() {
-        this.loadItems();
     }
 
     render() {

@@ -1,28 +1,40 @@
 import React from "react";
-import {Link} from "react-router-dom";
+import {Nav, NavItem} from "react-bootstrap";
+import {NavLink} from "react-router-dom";
+
 
 export default class Navigator extends React.Component {
 
-     render() {
-        return (
+    constructor() {
+        super();
+        this.state = {
+            activeKey: 1
+        };
+    }
 
-            <div id="navigator" >
-                <div className="ui secondary pointing menu">
-                </div>
-                <ul >
-                    <li className="active item">
-                        <Link to="table" >
-                            <code>table</code>
-                        </Link>
-                    </li>
-                    <li className="item">
-                        <Link to="list" >
-                            <code>list</code>
-                        </Link>
-                    </li>
-                </ul>
+    handleSelect = eventKey => {
+           debugger;
+           this.setState({activeKey: eventKey});
+           debugger;
+    };
+
+
+    render() {
+        return (
+            <div id="navigator">
+                <Nav bsStyle="tabs" activeKey={this.state.activeKey} onSelect={this.handleSelect}>
+                    <NavItem eventKey={1} href="/list">
+                        <NavLink to="list">List</NavLink>
+                    </NavItem>
+                    <NavItem eventKey={2} href="/table">
+                        <NavLink to="table">Table</NavLink>
+                    </NavItem>
+                </Nav>
             </div>
         );
     }
 }
+
+
+
 

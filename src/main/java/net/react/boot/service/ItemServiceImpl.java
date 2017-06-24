@@ -9,14 +9,12 @@ import java.util.List;
 
 /**
  * Created by Jakub krhovják on 6/17/17.
- *
  */
 
 @Service
 public class ItemServiceImpl implements ItemService {
 
-   private ItemDao itemDao;
-
+    private ItemDao itemDao;
 
     public List<Item> findAll() {
         return itemDao.findAll();

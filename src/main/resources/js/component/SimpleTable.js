@@ -17,7 +17,6 @@ export default class SimpleTable extends React.Component {
     }
 
     componentDidMount() {
-        debugger;
         this.loadItems();
     }
 
@@ -39,8 +38,6 @@ export default class SimpleTable extends React.Component {
 
     render() {
         let items = this.state.items;
-
-        debugger;
         return (
             <div>
                 <Table celled padded>

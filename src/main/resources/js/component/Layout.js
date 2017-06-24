@@ -8,10 +8,7 @@ import {BrowserRouter as Router } from "react-router-dom";
 export default class Layout extends React.Component {
     constructor() {
         super();
-        this.state = {
-            title: "Ahojss3",
-        };
-    }
+     }
 
     changeTitle(title) {
         this.setState({title});
@@ -21,7 +18,7 @@ export default class Layout extends React.Component {
         return (
             <div>
 
-                <Router history={createBrowserHistory} >
+                <Router basename="/" >
                     <div>
                         <Navigator/>
                         <Content />

@@ -28,14 +28,13 @@ public class ItemGenerator implements Generator<Item> {
     @Override
     public List<Item> generate() {
         URL url = ReactBootDemo.class.getClassLoader().getResource(imagesFolder);
-        assert url != null;
         File images = new File(url.getPath());
-        return Arrays.stream(images.list()).map(imageName -> new Item(publicFolder.concat(imageName),
-                    generateString(10),
-                    generateString(20),
-                    generateString(200),
-                    generateString(20))
+        return Arrays.stream(images.list())
+                .map(imageName -> new Item(publicFolder.concat(imageName),
+                generateString(10),
+                generateString(20),
+                generateString(200),
+                generateString(20))
                 ).collect(toList());
     }
-
 }
