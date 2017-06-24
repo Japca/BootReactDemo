@@ -1,7 +1,6 @@
 var debug = process.env.NODE_ENV !== "production";
 var webpack = require('webpack');
 var path = require('path');
-// var axios = require('axios');
 
 module.exports = {
     context: path.join(__dirname, "src/main/resources/"),
@@ -25,6 +24,7 @@ module.exports = {
                 test: /\.css$/,
                 loader: 'css-loader',
                 query: {
+                   importLoader: 1,
                     modules: true,
                     localIdentName: '[name]__[local]___[hash:base64:5]'
                 }
@@ -34,13 +34,15 @@ module.exports = {
 
 
 
-   output: {
+    output: {
         path: __dirname + "/src/main/resources/static",
-        filename: "./index.min.js"
+        filename: "./index.min.js",
+        publicPath: '/'
+
     },
 
     devServer: {
-        hot: true,
+        historyApiFallback: true,
         // proxy: {
         //     '/': {
         //         target: 'https://localhost:8080',
@@ -52,7 +54,7 @@ module.exports = {
     plugins: debug ? [] : [
         new webpack.optimize.DedupePlugin(),
         new webpack.optimize.OccurenceOrderPlugin(),
-        new webpack.optimize.UglifyJsPlugin({mangle: false, sourcemap: false}),
-       ],
+        new webpack.optimize.UglifyJsPlugin({sourcemap: true}),
+    ],
     // devtool : 'source-map'
 };

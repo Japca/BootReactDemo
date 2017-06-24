@@ -39,7 +39,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Japca/touch.git"
+    "url": "git+https://github.com/Japca/BootReactDemo.git"
   },
   "eslintConfig": {
     "parserOptions": {
@@ -58,7 +58,7 @@
   "author": "Jakub Krhovják",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Japca/touch/issues"
+    "url": "https://github.com/Japca/BootReactDemo/issues"
   },
-  "homepage": "https://github.com/Japca/touch#readme"
+  "homepage": "https://github.com/Japca/BootReactDemo#readme"
 }
