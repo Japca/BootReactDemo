@@ -4,40 +4,14 @@
  */
 
 import React from "react";
-import axios from "axios";
 import {Media} from "react-bootstrap";
- import styles from "./list.css";
+import styles from "./itemList.css";
+import { connect } from "react-redux";
 
-export default class Card extends React.Component {
-
-    constructor() {
-        super();
-        this.state = {
-            items: [],
-        };
-    }
-
-    componentDidMount() {
-        this.loadItems();
-    }
-
-    loadItems() {
-        return axios.get('http://localhost:8080/items')
-            .then(response => {
-                this.setState({ items:response.data });
-            })
-            .catch(error => {
-                console.log("Error!");
-                console.log(error);
-            })
-            .then(response => {
-                console.log(response);
-            });
-
-    }
+class ItemList extends React.Component {
 
     render() {
-        let items = this.state.items;
+        let items = this.props.items;
         return (
             <div className={styles.listClass}>
                     { items.map(item => {
@@ -58,3 +32,11 @@ export default class Card extends React.Component {
     }
 }
 
+function mapStateToProps(state) {
+     return {
+        items: state.items,
+    };
+}
+
+
+ export default connect(mapStateToProps)(ItemList);

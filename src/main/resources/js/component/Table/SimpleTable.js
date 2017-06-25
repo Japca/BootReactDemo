@@ -4,40 +4,13 @@
  *
  */
 import React from "react";
-import axios from "axios"
 import {Table, thead, tr, th} from 'react-bootstrap';
+import { connect } from "react-redux";
 
-export default class SimpleTable extends React.Component {
-
-    constructor() {
-        super();
-        this.state = {
-            items: [],
-        };
-    }
-
-    componentDidMount() {
-        this.loadItems();
-    }
-
-    loadItems() {
-        return axios.get('http://localhost:8080/items')
-            .then(response => {
-                this.setState({items: response.data});
-            })
-            .catch(error => {
-                console.log("Error!");
-                console.log(error);
-            })
-            .then(response => {
-                console.log("Finally");
-                console.log(response);
-            });
-
-    }
+class SimpleTable extends React.Component {
 
     render() {
-        let items = this.state.items;
+        let items = this.props.items;
         return (
             <div>
                 <Table striped bordered condensed hover>
@@ -62,6 +35,15 @@ export default class SimpleTable extends React.Component {
         );
     }
 }
+
+function mapStateToProps(state) {
+    return {
+        items: state.items,
+    };
+}
+
+
+export default connect(mapStateToProps)(SimpleTable);
 
 
 

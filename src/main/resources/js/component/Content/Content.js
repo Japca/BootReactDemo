@@ -5,7 +5,7 @@
 
 import React from "react";
 import SimpleTable from "../Table/SimpleTable";
-import List from "../List/List";
+import ItemList from "../ItemList/ItemList";
 import {Route, Switch} from "react-router-dom";
 import styles from "./content.css";
 
@@ -15,8 +15,8 @@ export default class Content extends React.Component {
         return (
             <div id="content" className={styles.contentClass}>
                 <Switch>
-                    <Route exact path='/' component={List}/>
-                    <Route path='/list' component={List}/>
+                    <Route exact path='/' component={ItemList}/>
+                    <Route path='/list' component={ItemList}/>
                     <Route path='/table' component={SimpleTable}/>
                 </Switch>
             </div>
