@@ -1,9 +1,9 @@
-import React from "react";
-import {Nav, NavItem} from "react-bootstrap";
-import {NavLink} from "react-router-dom";
+import React, { Component } from "react";
+import { Nav, NavItem } from "react-bootstrap";
+import { NavLink } from "react-router-dom";
 
 
-export default class Navigator extends React.Component {
+export default class Navigator extends Component {
 
     constructor() {
         super();

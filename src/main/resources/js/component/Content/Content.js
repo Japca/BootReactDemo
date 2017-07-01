@@ -4,8 +4,8 @@
  */
 
 import React from "react";
-import SimpleTable from "../Table/SimpleTable";
-import ItemList from "../ItemList/ItemList";
+import SimpleTable from "../../container/Table/SimpleTable";
+import ItemList from "../../container/ItemList/ItemList";
 import {Route, Switch} from "react-router-dom";
 import styles from "./content.css";
 
