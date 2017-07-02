@@ -4,11 +4,10 @@
  */
 
 import React, {Component}from "react";
-import {Media} from "react-bootstrap";
+import { Media } from "react-bootstrap";
 import styles from "./itemList.css";
-import {bindActionCreators} from "redux";
-import {connect} from "react-redux";
-import {fetchItems} from "../../action/index";
+import { connect } from "react-redux";
+import { fetchItems } from "../../action/index";
 
 class ItemList extends Component {
 
@@ -48,8 +47,4 @@ function mapStateToProps({ items }) {
     return { items };
 }
 
-function mapDispatchToProps(dispatch) {
-    return bindActionCreators({ fetchItems }, dispatch);
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(ItemList);
+export default connect(mapStateToProps, { fetchItems })(ItemList);

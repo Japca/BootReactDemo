@@ -5,7 +5,6 @@
  */
 import React, {Component} from "react";
 import {Table, thead, tr, th} from 'react-bootstrap';
-import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
 import {fetchItems} from "../../action/index";
 
@@ -55,11 +54,7 @@ function mapStateToProps({items}) {
     return { items };
 }
 
-function mapDispatchToProps(dispatch) {
-    return bindActionCreators({fetchItems}, dispatch);
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(SimpleTable);
+export default connect(mapStateToProps, { fetchItems } )(SimpleTable);
 
 
 

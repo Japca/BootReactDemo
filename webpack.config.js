@@ -32,8 +32,6 @@ module.exports = {
         ],
     },
 
-
-
     output: {
         path: __dirname + "/src/main/resources/static",
         filename: "./index.min.js",
@@ -42,7 +40,8 @@ module.exports = {
     },
 
     devServer: {
-        historyApiFallback: true,
+        historyApiFallback: true
+      //  contentBase: "./"
         // proxy: {
         //     '/': {
         //         target: 'https://localhost:8080',

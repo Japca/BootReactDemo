@@ -8,6 +8,8 @@ import SimpleTable from "../../container/Table/SimpleTable";
 import ItemList from "../../container/ItemList/ItemList";
 import {Route, Switch} from "react-router-dom";
 import styles from "./content.css";
+import {ROOT, PAGE_LIST, PAGE_TABLE} from "../Layout/Layout";
+
 
 export default class Content extends React.Component {
 
@@ -15,12 +17,14 @@ export default class Content extends React.Component {
         return (
             <div id="content" className={styles.contentClass}>
                 <Switch>
-                    <Route exact path='/' component={ItemList}/>
-                    <Route path='/list' component={ItemList}/>
-                    <Route path='/table' component={SimpleTable}/>
+                    <Route exact path={ROOT} component={ItemList}/>
+                    <Route path={PAGE_LIST} component={ItemList}/>
+                    <Route path={PAGE_TABLE} component={SimpleTable}/>
                 </Switch>
             </div>
         );
     }
+
+
 
 }

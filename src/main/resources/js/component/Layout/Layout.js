@@ -10,6 +10,10 @@ import ReduxPromise from "redux-promise";
 
 const createStoreWithMiddleware = applyMiddleware(ReduxPromise)(createStore);
 
+export const PAGE_LIST = "/list";
+export const PAGE_TABLE = "/table";
+export const ROOT = "/";
+
 export default class Layout extends Component {
 
     render() {
@@ -23,7 +27,6 @@ export default class Layout extends Component {
                         </div>
                     </Router>
                 </Provider>
-
             </div>
         );
     }
