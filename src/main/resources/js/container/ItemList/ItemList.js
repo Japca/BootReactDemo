@@ -3,12 +3,12 @@
  *
  */
 
-import React, { Component }from "react";
+import React, {Component}from "react";
 import {Media} from "react-bootstrap";
 import styles from "./itemList.css";
-import { bindActionCreators } from "redux";
-import { connect } from "react-redux";
-import { fetchItems } from "../../action/index";
+import {bindActionCreators} from "redux";
+import {connect} from "react-redux";
+import {fetchItems} from "../../action/index";
 
 class ItemList extends Component {
 
@@ -17,31 +17,35 @@ class ItemList extends Component {
     }
 
     render() {
-        let items = this.props.items;
         return (
             <div className={styles.listClass}>
-                    { items.map(item => {
-                        return <Media key={item.id} className={styles.itemStyle}>
-                            <Media.Left>
-                             <img width={128} height={128} src={item.itemImage}/>
-                            </Media.Left>
-                            <Media.Body>
-                                <Media.Heading>{item.header}</Media.Heading>
-                                <p>{item.meta}</p>
-                                <p>{item.description}</p>
-                                <p>{item.extra}</p>
-                            </Media.Body>
-                        </Media>
-                    })}
+                {this.renderItemList()}
             </div>
+        );
+    }
+
+    renderItemList = () => {
+        let items = this.props.items;
+        return (
+            items.map(item => {
+                return <Media key={item.id} className={styles.itemStyle} >
+                    <Media.Left>
+                        <img width={128} height={128} src={item.itemImage}/>
+                    </Media.Left>
+                    <Media.Body>
+                        <Media.Heading>{item.header}</Media.Heading>
+                        <p>{item.meta}</p>
+                        <p>{item.description}</p>
+                        <p>{item.extra}</p>
+                    </Media.Body>
+                </Media>
+            })
         );
     }
 }
 
-function mapStateToProps(state) {
-     return {
-        items: state.items,
-    };
+function mapStateToProps({ items }) {
+    return { items };
 }
 
 function mapDispatchToProps(dispatch) {

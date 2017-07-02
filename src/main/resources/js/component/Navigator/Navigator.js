@@ -1,21 +1,17 @@
 import React, { Component } from "react";
 import { Nav, NavItem } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
+import { withRouter } from 'react-router-dom';
 
 
 export default class Navigator extends Component {
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             activeKey: 1
         };
     }
-
-    handleSelect = eventKey => {
-           this.setState({activeKey: eventKey});
-    };
-
 
     render() {
         return (
@@ -31,6 +27,11 @@ export default class Navigator extends Component {
             </div>
         );
     }
+
+    handleSelect = eventKey => {
+        this.setState({activeKey: eventKey});
+    };
+
 }
 
 

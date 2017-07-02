@@ -16,13 +16,13 @@ export default class Layout extends Component {
         return (
             <div className={styles.mainLayout}>
                 <Provider store={createStoreWithMiddleware(reducers)}>
-                    <Router  >
+                    <Router>
                         <div>
                             <Navigator/>
                             <Content />
                         </div>
                     </Router>
-                </Provider>>
+                </Provider>
 
             </div>
         );

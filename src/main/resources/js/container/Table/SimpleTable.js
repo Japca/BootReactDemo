@@ -5,9 +5,9 @@
  */
 import React, {Component} from "react";
 import {Table, thead, tr, th} from 'react-bootstrap';
-import {bindActionCreators } from "redux";
-import { connect } from "react-redux";
-import { fetchItems } from "../../action/index";
+import {bindActionCreators} from "redux";
+import {connect} from "react-redux";
+import {fetchItems} from "../../action/index";
 
 class SimpleTable extends Component {
 
@@ -19,37 +19,44 @@ class SimpleTable extends Component {
         let items = this.props.items;
         return (
             <div>
-                <Table striped bordered condensed hover>
-                    <thead>
+                {this.renderTable()}
+            </div>
+        );
+    }
+
+    renderTable = () => {
+        let items = this.props.items;
+        return (
+            <Table striped bordered condensed hover>
+                <thead>
+                <tr>
                     <th>Name</th>
                     <th>Position</th>
                     <th>About</th>
                     <th>Extra</th>
-                    </thead>
-                    <tbody>
-                    {items.map(item => {
-                        return <tr key={item.id}>
-                            <td>{item.header}</td>
-                            <td>{item.meta}</td>
-                            <td>{item.description}</td>
-                            <td>{item.extra}</td>
-                        </tr>
-                    })}
-                    </tbody>
-                </Table>
-            </div>
+                </tr>
+                </thead>
+                <tbody>
+                {items.map(item => {
+                    return <tr key={item.id}>
+                        <td>{item.header}</td>
+                        <td>{item.meta}</td>
+                        <td>{item.description}</td>
+                        <td>{item.extra}</td>
+                    </tr>
+                })}
+                </tbody>
+            </Table>
         );
-    }
-}
-
-function mapStateToProps(state) {
-    return {
-        items: state.items,
     };
 }
 
+function mapStateToProps({items}) {
+    return { items };
+}
+
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators({ fetchItems }, dispatch);
+    return bindActionCreators({fetchItems}, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(SimpleTable);

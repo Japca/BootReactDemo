@@ -14,8 +14,7 @@ module.exports = {
                 loader: 'babel-loader',
                 query: {
                     presets: ['react', 'es2015', 'stage-0'],
-                    plugins: ['react-html-attrs', 'transform-decorators-legacy',
-                        'transform-class-properties', "transform-es2015-spread"],
+                    plugins: ['transform-class-properties'],
                 }
             },
             {
@@ -57,5 +56,5 @@ module.exports = {
         new webpack.optimize.OccurenceOrderPlugin(),
         new webpack.optimize.UglifyJsPlugin({sourcemap: true}),
     ],
-    // devtool : 'source-map'
+
 };
