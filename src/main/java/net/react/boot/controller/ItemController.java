@@ -26,6 +26,8 @@ public class ItemController {
        return itemService.findAll();
     }
 
+//    @RequestMapping(value = "/item/{id}", method = RequestMethod.POST)
+
     @Autowired
     public void setItemService(ItemService itemService) {
         this.itemService = itemService;

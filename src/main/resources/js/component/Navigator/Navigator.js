@@ -7,13 +7,14 @@ class Navigator extends Component {
 
     constructor(props) {
         super(props);
-        let { location : { pathname } }  = props.history;
+        let { location : { pathname } } = props.history;
         this.state = {
             activeKey: pathname === ROOT ? PAGE_LIST : pathname
         };
     }
 
     render() {
+        console.log("Navigator");
         return (
             <div id="navigator">
                 <Nav bsStyle="tabs" activeKey={this.state.activeKey} onSelect={this.handleSelect}>

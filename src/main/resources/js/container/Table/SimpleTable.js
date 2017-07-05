@@ -3,7 +3,7 @@
  * Created by cor on 4/5/17.
  *
  */
-import React, {Component} from "react";
+import React, {Component, PureComponent} from "react";
 import {Table, thead, tr, th} from 'react-bootstrap';
 import {connect} from "react-redux";
 import {fetchItems} from "../../action/index";
@@ -15,7 +15,7 @@ class SimpleTable extends Component {
     }
 
     render() {
-        let items = this.props.items;
+      console.log("render table");
         return (
             <div>
                 {this.renderTable()}

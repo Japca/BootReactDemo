@@ -1,12 +1,12 @@
-import ITEMS from  "../action/index";
+import { FETCH_ITEMS } from  "../action/index";
 
 export const loadItems = (state = [], action) => {
-
-    if (action.type === "ITEMS") {
-         return [...action.payload.data];
-
+    switch (action.type) {
+        case FETCH_ITEMS :
+            return [...action.payload.data];
+        default:
+            return state;
     }
-    return state;
 };
 
 
