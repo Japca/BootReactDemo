@@ -56,10 +56,6 @@ class ItemList extends Component {
 
     renderCharactersList = () => {
         let characters = this.props.characters;
-        if(! characters) {
-            return;
-        }
-        debugger;
         return (
             characters.map(character => {
                 return <Media key={character.id} className={styles.itemStyle} onClick={() => this.openModal()}>
@@ -85,47 +81,26 @@ class ItemList extends Component {
                 contentLabel="Edit item"
                 style={customStyles}
             >
-                <form onSubmit={handleSubmit(this.updateItem.bind(this))}>
+                <form onSubmit={handleSubmit(this.updateCharacter.bind(this))}>
                     <h3 className={styles.modalHeader} id="heading">Edit item</h3>
                     <hr/>
 
-                    <Field name="header"
+                    <Field name="name"
                            component={this.renderField}
-                           props={{
-                               id: "formControlsName",
-                               label: "name",
-                               props: {
-                                   type: "text",
-                                   placeholder: "Enter name"
-                               }
-                           }
-                           }
+                           props = {this.inputProps("formControlsName", "Name", {type:"text", placeholder: "Enter Name"})}
                     />
-
-                    {/*<FieldGroup*/}
-                    {/*id="formControlsName"*/}
-                    {/*type="text"*/}
-                    {/*label="Name"*/}
-                    {/*placeholder="Enter name"*/}
-                    {/*/>*/}
-                    {/*<FieldGroup*/}
-                    {/*id="formControlsTitle"*/}
-                    {/*type="text"*/}
-                    {/*label="Title"*/}
-                    {/*placeholder="Enter title"*/}
-                    {/*/>*/}
-                    {/*<FieldGroup*/}
-                    {/*id="formControlsDescription"*/}
-                    {/*type="text"*/}
-                    {/*label="Description"*/}
-                    {/*placeholder="Enter description"*/}
-                    {/*/>*/}
-                    {/*<FieldGroup*/}
-                    {/*id="formControlsEmail"*/}
-                    {/*type="email"*/}
-                    {/*label="Email"*/}
-                    {/*placeholder="Enter email"*/}
-                    {/*/>*/}
+                    <Field name="profession"
+                           component={this.renderField}
+                           props = {this.inputProps("formControlsProfession", "profession", {type:"text", placeholder: "Enter Profession"})}
+                    />
+                    <Field name="description"
+                           component={this.renderField}
+                           props = {this.inputProps("formControlsDescription", "Description", {type:"text", placeholder: "Enter Description"})}
+                    />
+                    <Field name="email"
+                           component={this.renderField}
+                           props = {this.inputProps("formControlsEmail", "Email", {type:"text", placeholder: "Enter Email"})}
+                    />
                     <ButtonToolbar>
                         <Button bsStyle="default" className="btn pull-right" type="submit" onClick={() => this.closeModal()}>Close</Button>
                         <Button type="submit" bsStyle="primary" className="btn pull-right">Submit</Button>
@@ -143,44 +118,33 @@ class ItemList extends Component {
         this.setState({modalIsOpen: false});
     }
 
-    updateItem(item) {
-        debugger;
-        this.props.editItem(item);
+    updateCharacter(character) {
+        this.props.editCharacter(character);
         this.setState({modalIsOpen: false});
     }
 
-
     renderField(field) {
+        let props = field.props;
         return (
-        <input className="form-control" type="text" {...field.input} />
-            // <FormGroup controlId={field.id}>
-            //     <ControlLabel>{field.label}</ControlLabel>
-            //     <FormControl {...field.props} />
-            //     {/*{help && <HelpBlock>{help}</HelpBlock>}*/}
-            // </FormGroup>
+            <FormGroup controlId={field.id}>
+                <ControlLabel>{field.label}</ControlLabel>
+                <FormControl type={props.type}  placeholder={props.placeholder} {...field.input} />
+            </FormGroup>
         );
     }
 
+    inputProps(id, label, props) {
+        return {
+            id : id,
+            label : label,
+            props : props
+        }
+    }
 }
 
 
-// function FieldGroup({id, label, help, ...props}) {
-//     debugger;
-//     return (
-//         <div>
-//             <FormGroup controlId={id}>
-//                 <ControlLabel>{label}</ControlLabel>
-//                 <FormControl {...props} />
-//                 {help && <HelpBlock>{help}</HelpBlock>}
-//             </FormGroup>
-//         </div>
-//     );
-// }
-// /rops = Object {type: "text", placeholder:
-
-function mapStateToProps({characters}) {
-    debugger;
-    return {characters};
+function mapStateToProps({ characters }) {
+    return { characters }
 }
 
 export default reduxForm({
@@ -188,6 +152,3 @@ export default reduxForm({
     form: "editCharacterForm"
 })(connect(mapStateToProps, { fetchCharacters, editCharacter })(ItemList));
 
-
-// {fetchItems, editItem
-// export default connect(mapStateToProps, {fetchItems, editItem})(ItemList)
