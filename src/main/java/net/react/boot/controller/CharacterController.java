@@ -25,9 +25,7 @@ public class CharacterController {
 
     @RequestMapping(value = "/character", method = RequestMethod.POST)
     public Character saveCharacter(@RequestBody Character character) {
-        character.setId(1L);
-        return character;
- //       return itemService.save(character);
+         return characterService.save(character);
     }
 
     @Autowired
