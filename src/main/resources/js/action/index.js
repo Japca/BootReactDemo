@@ -1,19 +1,22 @@
 import axios from "axios";
+import { reducer as formReducer} from "redux"
 
-export const FETCH_ITEMS = "ITEMS";
-export const EDIT_ITEM  = "EDIT_ITEM";
+export const FETCH_CHARACTERS = "FETCH_CHARACTERS";
+export const EDIT_CHARACTER  = "EDIT_ITEM";
 
-export function fetchItems() {
+export function fetchCharacters() {
+    debugger;
     return {
-        type: FETCH_ITEMS,
-        payload: axios.get('http://localhost:8080/items')
+        type: FETCH_CHARACTERS,
+        payload: axios.get('http://localhost:8080/characters')
     };
 }
 
-export function editItem(item) {
+export function editCharacter(character) {
+    debugger;
     return {
-        type: EDIT_ITEM,
-        payload: axios.post(`http://localhost:8080/item/${item.id}`)
+        type: EDIT_CHARACTER,
+        payload: axios.post("http://localhost:8080/character", character)
     };
 }
 

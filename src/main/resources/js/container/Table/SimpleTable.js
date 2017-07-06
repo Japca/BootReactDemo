@@ -6,12 +6,12 @@
 import React, {Component, PureComponent} from "react";
 import {Table, thead, tr, th} from 'react-bootstrap';
 import {connect} from "react-redux";
-import {fetchItems} from "../../action/index";
+import {fetchCharacters} from "../../action/index";
 
 class SimpleTable extends Component {
 
     componentDidMount() {
-        this.props.fetchItems();
+        this.props.fetchCharacters();
     }
 
     render() {
@@ -24,7 +24,7 @@ class SimpleTable extends Component {
     }
 
     renderTable = () => {
-        let items = this.props.items;
+        let characters = this.props.characters;
         return (
             <Table striped bordered condensed hover>
                 <thead>
@@ -32,16 +32,16 @@ class SimpleTable extends Component {
                     <th>Name</th>
                     <th>Position</th>
                     <th>About</th>
-                    <th>Extra</th>
+                    <th>Email</th>
                 </tr>
                 </thead>
                 <tbody>
-                {items.map(item => {
-                    return <tr key={item.id}>
-                        <td>{item.header}</td>
-                        <td>{item.meta}</td>
-                        <td>{item.description}</td>
-                        <td>{item.extra}</td>
+                {characters.map(character => {
+                    return <tr key={character.id}>
+                        <td>{character.name}</td>
+                        <td>{character.profession}</td>
+                        <td>{character.description}</td>
+                        <td>{character.email}</td>
                     </tr>
                 })}
                 </tbody>
@@ -50,11 +50,11 @@ class SimpleTable extends Component {
     };
 }
 
-function mapStateToProps({items}) {
-    return { items };
+function mapStateToProps({ characters }) {
+    return { characters };
 }
 
-export default connect(mapStateToProps, { fetchItems } )(SimpleTable);
+export default connect(mapStateToProps, { fetchCharacters } )(SimpleTable);
 
 
 

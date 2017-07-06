@@ -1,8 +1,8 @@
 package net.react.boot;
 
-import net.react.boot.domain.Item;
+import net.react.boot.domain.Character;
 import net.react.boot.generator.Generator;
-import net.react.boot.service.ItemService;
+import net.react.boot.service.CharacterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -14,9 +14,9 @@ import javax.annotation.PostConstruct;
 @EnableJpaRepositories
 public class ReactBootDemo {
 
-    private ItemService itemService;
+    private CharacterService itemService;
 
-    private Generator<Item> generator;
+    private Generator<Character> generator;
 
     public static void main(String[] args) {
         SpringApplication.run(ReactBootDemo.class, args);
@@ -28,12 +28,12 @@ public class ReactBootDemo {
     }
 
     @Autowired
-    public void setItemService(ItemService itemService) {
+    public void setItemService(CharacterService itemService) {
         this.itemService = itemService;
     }
 
     @Autowired
-    public void setGenerator(Generator<Item> generator) {
+    public void setGenerator(Generator<Character> generator) {
         this.generator = generator;
     }
 }

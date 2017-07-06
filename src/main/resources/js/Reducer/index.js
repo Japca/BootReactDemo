@@ -1,7 +1,9 @@
 import {combineReducers} from "redux";
-import { loadItems } from "./itemsReducer.js";
+import CharacterReducer from "./charcterReducer.js";
+import { reducer as formReducer} from "redux-form";
 
 export const reducers = combineReducers({
-    items: loadItems,
+    characters: CharacterReducer,
+    form: formReducer
 });
 
