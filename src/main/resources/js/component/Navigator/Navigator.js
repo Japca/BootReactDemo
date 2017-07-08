@@ -1,7 +1,7 @@
-import React, { Component } from "react";
-import { Nav, NavItem } from "react-bootstrap";
-import { withRouter } from "react-router-dom";
-import { ROOT, PAGE_LIST, PAGE_TABLE } from "../Layout/Layout"
+import React, { Component } from 'react';
+import { Nav, NavItem } from 'react-bootstrap';
+import { withRouter } from 'react-router-dom';
+import { ROOT, PAGE_LIST, PAGE_TABLE } from '../Layout/Layout';
 
 class Navigator extends Component {
 
@@ -14,10 +14,10 @@ class Navigator extends Component {
     }
 
     render() {
-        console.log("Navigator");
+        console.log('Navigator');
         return (
-            <div id="navigator">
-                <Nav bsStyle="tabs" activeKey={this.state.activeKey} onSelect={this.handleSelect}>
+            <div id='navigator'>
+                <Nav bsStyle='tabs' activeKey={this.state.activeKey} onSelect={this.handleSelect}>
                     <NavItem eventKey={PAGE_LIST}>List</NavItem>
                     <NavItem eventKey={PAGE_TABLE}>Table</NavItem>
                 </Nav>
@@ -42,7 +42,7 @@ class Navigator extends Component {
     };
 }
 
-export default withRouter(Navigator)
+export default withRouter(Navigator);
 
 
 

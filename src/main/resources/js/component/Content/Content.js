@@ -3,20 +3,20 @@
  *
  */
 
-import React from "react";
-import SimpleTable from "../../container/Table/SimpleTable";
-import ItemList from "../../container/ItemList/ItemList";
-import {Route, Switch} from "react-router-dom";
-import styles from "./content.css";
-import {ROOT, PAGE_LIST, PAGE_TABLE} from "../Layout/Layout";
+import React from 'react';
+import SimpleTable from '../../container/Table/SimpleTable';
+import ItemList from '../../container/ItemList/ItemList';
+import {Route, Switch} from 'react-router-dom';
+import styles from './content.css';
+import {ROOT, PAGE_LIST, PAGE_TABLE} from '../Layout/Layout';
 
 
 export default class Content extends React.Component {
 
     render() {
-        console.log("content");
+        console.log('content');
         return (
-            <div id="content" className={styles.contentClass}>
+            <div id='content' className={styles.contentClass}>
                 <Switch>
                     <Route path={PAGE_LIST} component={ItemList}/>
                     <Route path={PAGE_TABLE} component={SimpleTable}/>

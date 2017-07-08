@@ -1,23 +1,24 @@
+/* eslint-disable no-unexpected-multiline */
 /**
  * Created by cor on 5/28/17.
  *
  */
 
-import React, {Component}from "react";
+import React, {Component}from 'react';
 import {Media, Button, ButtonToolbar, FormGroup, ControlLabel,
-    FormControl, Modal, Glyphicon } from "react-bootstrap";
-import styles from "./itemList.css";
-import {connect} from "react-redux";
-import { fetchCharacters, editCharacter, deleteCharacter } from "../../action/index";
-import {Field, reduxForm} from "redux-form";
-import Link from "link-react";
-import FontAwesome from "react-fontawesome";
+    FormControl, Modal, Glyphicon } from 'react-bootstrap';
+import styles from './itemList.css';
+import {connect} from 'react-redux';
+import { fetchCharacters, editCharacter, deleteCharacter } from '../../action/index';
+import {Field, reduxForm} from 'redux-form';
+// import '../../../../../../node_modules/font-awesome/css/font-awesome.min.css';
+
+
 
 class ItemList extends Component {
 
     constructor(props) {
         super(props);
-
         this.state = {
             characters: [],
             showModal: false
@@ -29,7 +30,7 @@ class ItemList extends Component {
     }
 
     render() {
-        console.log("render item list");
+        console.log('render item list');
         return (
             <div className={styles.listClass}>
                 { this.renderAddButton() }
@@ -42,8 +43,8 @@ class ItemList extends Component {
     renderAddButton = () => {
         return (
             <div className={styles.centre}>
-                <Button bsStyle="success" onClick={() => this.initForm({})}>
-                    <Glyphicon glyph="plus-sign" />
+                <Button bsStyle='success' onClick={() => this.initForm({})}>
+                    <Glyphicon glyph='plus-sign' />
                     </Button>
             </div>
         );
@@ -59,15 +60,15 @@ class ItemList extends Component {
                     </Media.Left>
                     <Media.Body>
                         <Media.Heading className={styles.heading}>
-                            <Link onClick={() => this.initForm(character)}>{character.name} </Link>
-                            <Button bsStyle="danger" className="pull-right"
+                            <a onClick={() => this.initForm(character)}>{character.name} </a>
+                            <Button bsStyle='danger' className='pull-right'
                                     onClick={() => this.deleteCharacter(character)}>Delete</Button>
                         </Media.Heading>
                         <p>{character.profession}</p>
                         <p>{character.description}</p>
                         <p>{character.email}</p>
                     </Media.Body>
-                </Media>
+                </Media>;
             })
         );
     };
@@ -85,43 +86,43 @@ class ItemList extends Component {
         return (
             <form onSubmit={handleSubmit(this.updateCharacter.bind(this))}>
                 <Modal.Header closeButton>
-                    <h3 className={styles.modalHeader} id="heading">Edit item</h3>
+                    <h3 className={styles.modalHeader} id='heading'>Edit item</h3>
                 </Modal.Header>
                 <Modal.Body>
-                    <Field name="name"
+                    <Field name='name'
                            component={this.renderField}
-                           props={this.inputProps("formControlsName", "Name", {
-                               type: "text",
-                               placeholder: "Enter Name"
+                           props={this.inputProps('formControlsName', 'Name', {
+                               type: 'text',
+                               placeholder: 'Enter Name'
                            })}
                     />
-                    <Field name="profession"
+                    <Field name='profession'
                            component={this.renderField}
-                           props={this.inputProps("formControlsProfession", "profession", {
-                               type: "text",
-                               placeholder: "Enter Profession"
+                           props={this.inputProps('formControlsProfession', 'profession', {
+                               type: 'text',
+                               placeholder: 'Enter Profession'
                            })}
                     />
-                    <Field name="description"
+                    <Field name='description'
                            component={this.renderField}
-                           props={this.inputProps("formControlsDescription", "Description", {
-                               type: "text",
-                               placeholder: "Enter Description"
+                           props={this.inputProps('formControlsDescription', 'Description', {
+                               type: 'text',
+                               placeholder: 'Enter Description'
                            })}
                     />
-                    <Field name="email"
+                    <Field name='email'
                            component={this.renderField}
-                           props={this.inputProps("formControlsEmail", "Email", {
-                               type: "text",
-                               placeholder: "Enter Email"
+                           props={this.inputProps('formControlsEmail', 'Email', {
+                               type: 'text',
+                               placeholder: 'Enter Email'
                            })}
                     />
                 </Modal.Body>
                 <Modal.Footer>
                     <ButtonToolbar>
-                        <Button bsStyle="default" className="btn pull-right"
+                        <Button bsStyle='default' className='btn pull-right'
                                 onClick={() => this.closeModal()}>Close</Button>
-                        <Button type="submit" bsStyle="primary" className="btn pull-right">Submit</Button>
+                        <Button type='submit' bsStyle='primary' className='btn pull-right'>Submit</Button>
                     </ButtonToolbar>
                 </Modal.Footer>
             </form>
@@ -137,7 +138,7 @@ class ItemList extends Component {
 
     openModal() {
            this.setState({ showModal: true });
-    };
+    }
 
     closeModal() {
         this.setState({ showModal: false });
@@ -145,7 +146,7 @@ class ItemList extends Component {
 
     updateCharacter(character) {
         this.props.editCharacter(character);
-        this.closeModal()
+        this.closeModal();
     }
 
     deleteCharacter(character) {
@@ -167,17 +168,17 @@ class ItemList extends Component {
             id : id,
             label : label,
             props : props
-        }
+        };
     }
 }
 
 
 function mapStateToProps({ characters }) {
-    return { characters }
+    return { characters };
 }
 
 export default reduxForm({
-    form: "editCharacterForm"
+    form: 'editCharacterForm'
 })
 (connect(mapStateToProps, { fetchCharacters, editCharacter, deleteCharacter })(ItemList));
 

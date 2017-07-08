@@ -1,8 +1,8 @@
-import axios from "axios";
+import axios from 'axios';
 
-export const FETCH_CHARACTERS = "FETCH_CHARACTERS";
-export const EDIT_CHARACTER  = "EDIT_CHARACTER";
-export const DELETE_CHARACTER = "DELETE_CHARACTER";
+export const FETCH_CHARACTERS = 'FETCH_CHARACTERS';
+export const EDIT_CHARACTER  = 'EDIT_CHARACTER';
+export const DELETE_CHARACTER = 'DELETE_CHARACTER';
 
 export function fetchCharacters() {
     return {
@@ -14,7 +14,7 @@ export function fetchCharacters() {
 export function editCharacter(character) {
     return {
         type: EDIT_CHARACTER,
-        payload: axios.post("http://localhost:8080/character", character)
+        payload: axios.post('http://localhost:8080/character', character)
     };
 }
 

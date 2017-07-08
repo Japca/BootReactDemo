@@ -31,6 +31,7 @@
     "eslint": "^4.1.1",
     "file-loader": "^0.11.2",
     "install": "^0.10.1",
+    "less-loader": "^4.0.4",
     "npm": "^5.0.4",
     "react-rpm": "^1.0.1",
     "style-loader": "^0.18.1",

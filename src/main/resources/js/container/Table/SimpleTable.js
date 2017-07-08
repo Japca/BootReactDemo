@@ -15,7 +15,7 @@ class SimpleTable extends Component {
     }
 
     render() {
-      console.log("render table");
+      console.log('render table');
         return (
             <div>
                 {this.renderTable()}
