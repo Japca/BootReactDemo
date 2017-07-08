@@ -10,7 +10,7 @@ module.exports = {
         loaders: [
             {
                 test: /\.jsx?$/,
-                exclude: /(node_modules|bower_components)/,
+                exclude: /(node_modules)/,
                 loader: 'babel-loader',
                 query: {
                     presets: ['react', 'es2015', 'stage-0'],
@@ -32,6 +32,10 @@ module.exports = {
             {
                 test: /\.less$/,
                 loaders: ['style-loader', 'css-loader', 'less-loader']
+            },
+            {
+                test: /(\.scss)$/,
+                loaders: ['style-loader', 'css-loader', 'sass-loader']
             },
             {
                 test: /\.(ttf|otf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/,

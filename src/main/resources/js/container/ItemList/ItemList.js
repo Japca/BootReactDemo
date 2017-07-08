@@ -11,7 +11,7 @@ import styles from './itemList.css';
 import {connect} from 'react-redux';
 import { fetchCharacters, editCharacter, deleteCharacter } from '../../action/index';
 import {Field, reduxForm} from 'redux-form';
-// import '../../../../../../node_modules/font-awesome/css/font-awesome.min.css';
+import FontAwesome from 'react-fontawesome';
 
 
 
@@ -43,8 +43,10 @@ class ItemList extends Component {
     renderAddButton = () => {
         return (
             <div className={styles.centre}>
-                <Button bsStyle='success' onClick={() => this.initForm({})}>
-                    <Glyphicon glyph='plus-sign' />
+                <Button bsStyle="success" onClick={() => this.initForm({})}>
+                    <span>
+                     <i className='fa fa-plus fa-2x' />
+                    </span>
                     </Button>
             </div>
         );
