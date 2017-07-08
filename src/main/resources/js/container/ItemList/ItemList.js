@@ -14,7 +14,6 @@ import {Field, reduxForm} from 'redux-form';
 import FontAwesome from 'react-fontawesome';
 
 
-
 class ItemList extends Component {
 
     constructor(props) {
@@ -45,7 +44,7 @@ class ItemList extends Component {
             <div className={styles.centre}>
                 <Button bsStyle="success" onClick={() => this.initForm({})}>
                     <span>
-                     <i className='fa fa-plus fa-2x' />
+                     <i className='fa fa-plus fa-lg' />
                     </span>
                     </Button>
             </div>
