@@ -42,7 +42,7 @@ class ItemList extends Component {
     renderAddButton = () => {
         return (
             <div className={styles.centre}>
-                <Button bsStyle="success" onClick={() => this.createCharacter()}>
+                <Button bsStyle="success" onClick={() => this.openModal()}>
                     <Glyphicon glyph="plus-sign" />
                     </Button>
             </div>
@@ -59,7 +59,7 @@ class ItemList extends Component {
                     </Media.Left>
                     <Media.Body>
                         <Media.Heading className={styles.heading}>
-                            <Link onClick={() => this.openModal()}>{character.name} </Link>
+                            <Link onClick={() => this.initForm(character)}>{character.name} </Link>
                             <Button bsStyle="danger" className="pull-right"  onClick={() => this.deleteCharacter(character)}>Delete</Button>
                         </Media.Heading>
                         <p>{character.profession}</p>
@@ -126,6 +126,11 @@ class ItemList extends Component {
             </form>
         );
     };
+
+    initForm(character) {
+        this.props.initialize(character);
+        this.openModal();
+    }
 
     openModal() {
            this.setState({ showModal: true });

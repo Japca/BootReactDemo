@@ -2,6 +2,7 @@ package net.react.boot.service;
 
 import net.react.boot.dao.CharacterDao;
 import net.react.boot.domain.Character;
+import net.react.boot.generator.CharacterGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +18,8 @@ public class CharacterServiceImpl implements CharacterService {
 
     private CharacterDao characterDao;
 
+    private CharacterGenerator characterGenerator;
+
     @Override
     public List<Character> findAll() {
         return characterDao.findAll();
@@ -24,7 +27,15 @@ public class CharacterServiceImpl implements CharacterService {
 
     @Override
     public Character save(Character character) {
+        if(isNewCharacter(character)) {
+            character.setImage(characterGenerator.generateImage());
+        }
+
         return characterDao.save(character);
+    }
+
+    private boolean isNewCharacter(Character character) {
+        return character.getId() == null;
     }
 
     @Override
@@ -41,5 +52,10 @@ public class CharacterServiceImpl implements CharacterService {
     @Autowired
     public void setCharacterDao(CharacterDao characterDao) {
         this.characterDao = characterDao;
+    }
+
+    @Autowired
+    public void setCharacterGenerator(CharacterGenerator characterGenerator) {
+        this.characterGenerator = characterGenerator;
     }
 }

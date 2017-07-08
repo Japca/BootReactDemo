@@ -1,4 +1,4 @@
-import { FETCH_CHARACTERS, EDIT_CHARACTER, DELETE_CHARACTER, CREATE_CHARACTER } from  "../action/index";
+import { FETCH_CHARACTERS, EDIT_CHARACTER, DELETE_CHARACTER } from  "../action/index";
 import _ from "lodash";
 
 export default function (state = [], action) {
@@ -9,8 +9,6 @@ export default function (state = [], action) {
              return updateCharacter( [...state], action.payload.data);
         case DELETE_CHARACTER :
            return deleteCharacter([...state],  { id: action.payload.data });
-        case CREATE_CHARACTER:
-             return [...action.payload.data, action.payload.data];
         default:
             return state;
     }

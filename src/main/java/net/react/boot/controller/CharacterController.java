@@ -29,7 +29,7 @@ public class CharacterController {
     }
 
     @RequestMapping(value = "/character/{id}", method = RequestMethod.DELETE)
-    public Long saveCharacter(@PathVariable Long id) {
+    public Long deleteCharacter(@PathVariable Long id) {
         return characterService.delete(id);
     }
 
