@@ -28,6 +28,12 @@ public class CharacterController {
          return characterService.save(character);
     }
 
+    @RequestMapping(value = "/character/{id}", method = RequestMethod.DELETE)
+    public Long saveCharacter(@PathVariable Long id) {
+        return characterService.delete(id);
+    }
+
+
     @Autowired
     public void setCharacterService(CharacterService characterService) {
         this.characterService = characterService;

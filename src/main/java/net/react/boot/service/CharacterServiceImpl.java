@@ -28,6 +28,12 @@ public class CharacterServiceImpl implements CharacterService {
     }
 
     @Override
+    public Long delete(Long id) {
+        characterDao.delete(id);
+        return id;
+    }
+
+    @Override
     public List<Character> save(List<Character> characters) {
         return characterDao.save(characters);
     }

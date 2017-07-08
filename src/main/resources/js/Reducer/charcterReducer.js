@@ -1,4 +1,4 @@
-import { FETCH_CHARACTERS, EDIT_CHARACTER } from  "../action/index";
+import { FETCH_CHARACTERS, EDIT_CHARACTER, DELETE_CHARACTER, CREATE_CHARACTER } from  "../action/index";
 import _ from "lodash";
 
 export default function (state = [], action) {
@@ -6,18 +6,26 @@ export default function (state = [], action) {
         case FETCH_CHARACTERS :
             return [...action.payload.data];
         case EDIT_CHARACTER :
-             return updateCharacters(state, action);
+             return updateCharacter( [...state], action.payload.data);
+        case DELETE_CHARACTER :
+           return deleteCharacter([...state],  { id: action.payload.data });
+        case CREATE_CHARACTER:
+             return [...action.payload.data, action.payload.data];
         default:
             return state;
     }
 };
 
-function updateCharacters(state, action) {
-    let newState = [...state];
-    let editedCharacter = action.payload.data;
-    let index = _.findIndex(newState, { id : editedCharacter.id });
-    newState.splice(index, 1, editedCharacter);
-    return newState;
+function deleteCharacter(state, character) {
+    let index = _.findIndex(state, { id : character.id });
+    state.splice(index, 1);
+    return state;
+}
+
+function updateCharacter(state, character) {
+    let index = _.findIndex(state, { id : character.id });
+    state.splice(index, 1, character);
+    return state;
 }
 
 

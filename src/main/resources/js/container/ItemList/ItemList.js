@@ -4,11 +4,14 @@
  */
 
 import React, {Component}from "react";
-import {Media, Button, ButtonToolbar, FormGroup, ControlLabel, FormControl, Modal} from "react-bootstrap";
+import {Media, Button, ButtonToolbar, FormGroup, ControlLabel,
+    FormControl, Modal, Glyphicon } from "react-bootstrap";
 import styles from "./itemList.css";
 import {connect} from "react-redux";
-import { fetchCharacters, editCharacter } from "../../action/index";
+import { fetchCharacters, editCharacter, deleteCharacter } from "../../action/index";
 import {Field, reduxForm} from "redux-form";
+import Link from "link-react";
+import FontAwesome from "react-fontawesome";
 
 class ItemList extends Component {
 
@@ -19,7 +22,6 @@ class ItemList extends Component {
             characters: [],
             showModal: false
         };
-
     }
 
     componentDidMount() {
@@ -30,22 +32,36 @@ class ItemList extends Component {
         console.log("render item list");
         return (
             <div className={styles.listClass}>
+                { this.renderAddButton() }
                 { this.renderCharactersList() }
                 { this.renderModal() }
             </div>
         );
     }
 
+    renderAddButton = () => {
+        return (
+            <div className={styles.centre}>
+                <Button bsStyle="success" onClick={() => this.createCharacter()}>
+                    <Glyphicon glyph="plus-sign" />
+                    </Button>
+            </div>
+        );
+    };
+
     renderCharactersList = () => {
         let characters = this.props.characters;
         return (
             characters.map(character => {
-                return <Media key={character.id} className={styles.itemStyle} onClick={() => this.openModal(character)}>
+                return <Media key={character.id} className={styles.itemStyle}>
                     <Media.Left>
                         <img width={128} height={128} src={character.image}/>
                     </Media.Left>
                     <Media.Body>
-                        <Media.Heading>{character.name}</Media.Heading>
+                        <Media.Heading className={styles.heading}>
+                            <Link onClick={() => this.openModal()}>{character.name} </Link>
+                            <Button bsStyle="danger" className="pull-right"  onClick={() => this.deleteCharacter(character)}>Delete</Button>
+                        </Media.Heading>
                         <p>{character.profession}</p>
                         <p>{character.description}</p>
                         <p>{character.email}</p>
@@ -56,72 +72,76 @@ class ItemList extends Component {
     };
 
     renderModal = () => {
-        const { handleSubmit } = this.props;
         return (
             <Modal show={this.state.showModal} onHide={() => this.closeModal()}>
-                <form onSubmit={handleSubmit(this.updateCharacter.bind(this))}>
-                    <Modal.Header closeButton>
-                        <h3 className={styles.modalHeader} id="heading">Edit item</h3>
-                    </Modal.Header>
-                    <Modal.Body>
-                        <Field name="name"
-                               component={this.renderField}
-                               props={this.inputProps("formControlsName", "Name", {
-                                   type: "text",
-                                   placeholder: "Enter Name"
-                               })}
-                        />
-                        <Field name="profession"
-                               component={this.renderField}
-                               props={this.inputProps("formControlsProfession", "profession", {
-                                   type: "text",
-                                   placeholder: "Enter Profession"
-                               })}
-                        />
-                        <Field name="description"
-                               component={this.renderField}
-                               props={this.inputProps("formControlsDescription", "Description", {
-                                   type: "text",
-                                   placeholder: "Enter Description"
-                               })}
-                        />
-                        <Field name="email"
-                               component={this.renderField}
-                               props={this.inputProps("formControlsEmail", "Email", {
-                                   type: "text",
-                                   placeholder: "Enter Email"
-                               })}
-                        />
-                    </Modal.Body>
-                    <Modal.Footer>
-                        <ButtonToolbar>
-                            <Button bsStyle="default" className="btn pull-right" type="submit"
-                                    onClick={() => this.closeModal()}>Close</Button>
-                            <Button type="submit" bsStyle="primary" className="btn pull-right">Submit</Button>
-                        </ButtonToolbar>
-                    </Modal.Footer>
-                </form>
+                { this.characterForm() }
             </Modal>
         );
     };
 
-    openModal(character) {
-           this.setState({
-            showModal: true,
-            characterId: character.id,
-            characterImage: character.image
-        });
+    characterForm = () => {
+        const { handleSubmit } = this.props;
+        return (
+            <form onSubmit={handleSubmit(this.updateCharacter.bind(this))}>
+                <Modal.Header closeButton>
+                    <h3 className={styles.modalHeader} id="heading">Edit item</h3>
+                </Modal.Header>
+                <Modal.Body>
+                    <Field name="name"
+                           component={this.renderField}
+                           props={this.inputProps("formControlsName", "Name", {
+                               type: "text",
+                               placeholder: "Enter Name"
+                           })}
+                    />
+                    <Field name="profession"
+                           component={this.renderField}
+                           props={this.inputProps("formControlsProfession", "profession", {
+                               type: "text",
+                               placeholder: "Enter Profession"
+                           })}
+                    />
+                    <Field name="description"
+                           component={this.renderField}
+                           props={this.inputProps("formControlsDescription", "Description", {
+                               type: "text",
+                               placeholder: "Enter Description"
+                           })}
+                    />
+                    <Field name="email"
+                           component={this.renderField}
+                           props={this.inputProps("formControlsEmail", "Email", {
+                               type: "text",
+                               placeholder: "Enter Email"
+                           })}
+                    />
+                </Modal.Body>
+                <Modal.Footer>
+                    <ButtonToolbar>
+                        <Button bsStyle="default" className="btn pull-right"
+                                onClick={() => this.closeModal()}>Close</Button>
+                        <Button type="submit" bsStyle="primary" className="btn pull-right">Submit</Button>
+                    </ButtonToolbar>
+                </Modal.Footer>
+            </form>
+        );
+    };
+
+    openModal() {
+           this.setState({ showModal: true });
     };
 
     closeModal() {
-        this.setState({showModal: false});
+        this.setState({ showModal: false });
     }
 
     updateCharacter(character) {
-        character.id = this.state.characterId;
-        character.image = this.state.characterImage;
         this.props.editCharacter(character);
-        this.setState({showModal: false});
+        this.closeModal()
+    }
+
+    deleteCharacter(character) {
+        this.props.deleteCharacter(character);
     }
 
     renderField(field) {
@@ -150,5 +170,6 @@ function mapStateToProps({ characters }) {
 
 export default reduxForm({
     form: "editCharacterForm"
-})(connect(mapStateToProps, { fetchCharacters, editCharacter })(ItemList));
+})
+(connect(mapStateToProps, { fetchCharacters, editCharacter, deleteCharacter })(ItemList));
 

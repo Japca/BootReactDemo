@@ -13,6 +13,8 @@ public interface CharacterService {
 
     Character save(Character character);
 
+    Long delete(Long id);
+
     List<Character> save(List<Character> characters);
 
 }
