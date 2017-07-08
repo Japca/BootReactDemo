@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 import java.io.File;
 import java.net.URL;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Random;
 
@@ -30,12 +31,14 @@ public class CharacterGenerator implements Generator<Character> {
     @Override
     public List<Character> generate() {
         return Arrays.stream(getImages().list())
-                .map(imageName -> new Character(publicFolder.concat(imageName),
-                generateName(20),
-                generateString(20),
-                generateString(200),
-                generateString(21))
-                ).collect(toList());
+                .map(imageName -> new Character(
+                        publicFolder.concat(imageName),
+                        generateName(20),
+                        generateString(20),
+                        generateString(200),
+                        generateString(21),
+                        Calendar.getInstance().getTime())
+                        ).collect(toList());
     }
 
     public String generateName(int count) {

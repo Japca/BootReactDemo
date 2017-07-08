@@ -18,8 +18,6 @@ public class GeneratorTest extends ReactBootDemoTests {
 
     private static final int NAME_SIZE = 20;
 
-    private static final int SPACE = 1;
-
     @Value("${public.image.folder}")
     private String publicFolder;
 

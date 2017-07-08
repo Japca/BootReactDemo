@@ -42,7 +42,7 @@ class ItemList extends Component {
     renderAddButton = () => {
         return (
             <div className={styles.centre}>
-                <Button bsStyle="success" onClick={() => this.openModal()}>
+                <Button bsStyle="success" onClick={() => this.initForm({})}>
                     <Glyphicon glyph="plus-sign" />
                     </Button>
             </div>
@@ -50,7 +50,7 @@ class ItemList extends Component {
     };
 
     renderCharactersList = () => {
-        let characters = this.props.characters;
+        let characters = this.props.characters.sort((nextCharacter, character) => character.created - nextCharacter.created);
         return (
             characters.map(character => {
                 return <Media key={character.id} className={styles.itemStyle}>
@@ -60,7 +60,8 @@ class ItemList extends Component {
                     <Media.Body>
                         <Media.Heading className={styles.heading}>
                             <Link onClick={() => this.initForm(character)}>{character.name} </Link>
-                            <Button bsStyle="danger" className="pull-right"  onClick={() => this.deleteCharacter(character)}>Delete</Button>
+                            <Button bsStyle="danger" className="pull-right"
+                                    onClick={() => this.deleteCharacter(character)}>Delete</Button>
                         </Media.Heading>
                         <p>{character.profession}</p>
                         <p>{character.description}</p>
@@ -126,6 +127,8 @@ class ItemList extends Component {
             </form>
         );
     };
+
+
 
     initForm(character) {
         this.props.initialize(character);

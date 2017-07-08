@@ -6,6 +6,7 @@ import net.react.boot.generator.CharacterGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Calendar;
 import java.util.List;
 
 /**
@@ -29,6 +30,10 @@ public class CharacterServiceImpl implements CharacterService {
     public Character save(Character character) {
         if(isNewCharacter(character)) {
             character.setImage(characterGenerator.generateImage());
+        }
+
+        if(character.getCreated() == null) {
+            character.setCreated(Calendar.getInstance().getTime());
         }
 
         return characterDao.save(character);

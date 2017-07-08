@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.util.Date;
 
 /**
  * Created by Jakub krhovják  on 4/1/17.
@@ -21,16 +22,18 @@ public class Character {
     private String profession;
     private String description;
     private String email;
+    private Date created;
 
     public Character() {
     }
 
-    public Character(String image, String name, String profession, String description, String email) {
+    public Character(String image, String name, String profession, String description, String email, Date created) {
         this.image = image;
         this.name = name;
         this.profession = profession;
         this.description = description;
         this.email = email;
+        this.created = created;
     }
 
     public Long getId() {
@@ -79,5 +82,13 @@ public class Character {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public Date getCreated() {
+        return created;
+    }
+
+    public void setCreated(Date created) {
+        this.created = created;
     }
 }
