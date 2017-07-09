@@ -6,13 +6,11 @@
 
 import React, {Component}from 'react';
 import {Media, Button, ButtonToolbar, FormGroup, ControlLabel,
-    FormControl, Modal, Glyphicon } from 'react-bootstrap';
+    FormControl, Modal } from 'react-bootstrap';
 import styles from './itemList.css';
 import {connect} from 'react-redux';
 import { fetchCharacters, editCharacter, deleteCharacter } from '../../action/index';
 import {Field, reduxForm} from 'redux-form';
-import FontAwesome from 'react-fontawesome';
-
 
 class ItemList extends Component {
 

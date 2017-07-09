@@ -2,7 +2,7 @@ const debug = process.env.NODE_ENV !== 'production';
 const webpack = require('webpack');
 const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const VENDOR_LIBS = [
     'react', 'react-dom', 'react-redux', 'react-bootstrap',
@@ -10,14 +10,16 @@ const VENDOR_LIBS = [
     'lodash', 'axios',
 ];
 
+const resources = 'src/main/resources/';
+
 module.exports = {
     entry: {
-        bundle:'./src/main/resources/js/index.js',
+        bundle: './src/main/resources/js/index.js',
         vendor: VENDOR_LIBS
     },
     output: {
-        path: path.resolve(__dirname, 'src/main/resources/static'),
-        filename: '[name].[hash].js'
+        path: path.resolve(__dirname, 'src/main/resources/public'),
+        filename: '[name].[hash].js',
     },
     module: {
         rules: [
@@ -32,7 +34,6 @@ module.exports = {
                     'css-loader?modules&importLoaders=2&localIdentName=[name]__[local]___[hash:base64:5]'
                 ),
             },
-
         ],
     },
 
