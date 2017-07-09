@@ -2,31 +2,37 @@ const debug = process.env.NODE_ENV !== 'production';
 const webpack = require('webpack');
 const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
+
+const VENDOR_LIBS = [
+    'react', 'react-dom', 'react-redux', 'react-bootstrap',
+    'redux', 'redux-promise', 'redux-form',
+    'lodash', 'axios',
+];
 
 module.exports = {
-    context: path.join(__dirname, 'src/main/resources/'),
-    entry: './js/index.js',
+    entry: {
+        bundle:'./src/main/resources/js/index.js',
+        vendor: VENDOR_LIBS
+    },
     output: {
-        path: __dirname + '/src/main/resources/static',
-        filename: './index.min.js',
+        path: path.resolve(__dirname, 'src/main/resources/static'),
+        filename: '[name].[hash].js'
     },
     module: {
         rules: [
             {
                 test: /\.jsx?$/,
                 exclude: /(node_modules)/,
-                loader: 'babel-loader',
-                query: {
-                    presets: ['react', 'es2015', 'stage-0'],
-                    plugins: ['transform-class-properties'],
-                }
+                use: 'babel-loader'
             },
             {
                 test: /\.css$/,
                 loader: ExtractTextPlugin.extract(
-                    'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]'
+                    'css-loader?modules&importLoaders=2&localIdentName=[name]__[local]___[hash:base64:5]'
                 ),
             },
+
         ],
     },
 
@@ -37,6 +43,13 @@ module.exports = {
     devtool: debug ? 'inline-sourcemap' : null,
 
     plugins: [
-        new ExtractTextPlugin('style.css')
+        new ExtractTextPlugin('style.css'),
+        new webpack.optimize.CommonsChunkPlugin({
+            names: ['vendor', 'manifest']
+        }),
+        new HtmlWebpackPlugin({
+            template: 'src/main/resources/templates/index.html'
+        })
+
     ],
 };
