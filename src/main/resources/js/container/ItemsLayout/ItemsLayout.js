@@ -13,20 +13,15 @@ import { fetchCharacters, editCharacter, deleteCharacter, sortBy} from '../../ac
 import {Field, reduxForm} from 'redux-form';
 
 import ItemsHandler from '../../component/ItemsHandler/ItemsHandler'
-import ItemsList from "../../component/ItemsList/ItemsList";
+import ItemsList from "../ItemsList/ItemsList";
 
-class ItemList extends Component {
+class ItemsLayout extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            characters: [],
             showModal: false
         };
-    }
-
-    componentDidMount() {
-        this.props.fetchCharacters();
     }
 
     render() {
@@ -36,8 +31,7 @@ class ItemList extends Component {
                 <ItemsHandler newItem={this.initForm}
                               sort={this.sort}
                 />
-                <ItemsList characters={this.props.characters}
-                           initForm={this.initForm}
+                <ItemsList  initForm={this.initForm}
                            deleteCharacter={this.deleteCharacter}
                 />
                 { this.renderModal() }
@@ -154,5 +148,5 @@ function mapStateToProps({ characters }) {
 export default reduxForm({
     form: 'editCharacterForm'
 })
-(connect(mapStateToProps, { sortBy, fetchCharacters, editCharacter, deleteCharacter })(ItemList));
+(connect(mapStateToProps, { sortBy, editCharacter, deleteCharacter })(ItemsLayout));
 

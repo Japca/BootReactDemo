@@ -5,9 +5,15 @@
 import React, { Component } from 'react';
 import { Media, Button } from 'react-bootstrap';
 import styles from './itemsList.css';
-import _ from 'lodash';
+import {connect} from 'react-redux';
+import { fetchCharacters, editCharacter, deleteCharacter, sortBy} from '../../action/index';
+
 
 class ItemsList extends Component {
+
+    componentDidMount() {
+        this.props.fetchCharacters();
+    }
 
     render() {
         return (
@@ -38,4 +44,9 @@ class ItemsList extends Component {
     };
 }
 
-export default ItemsList;
+function mapStateToProps({ characters }) {
+    return { characters };
+}
+
+export default connect(mapStateToProps, { fetchCharacters })(ItemsList);
+
