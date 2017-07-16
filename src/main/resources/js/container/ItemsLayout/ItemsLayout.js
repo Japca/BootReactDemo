@@ -9,7 +9,7 @@ import {Button, ButtonToolbar, FormGroup, ControlLabel,
     FormControl, Modal } from 'react-bootstrap';
 import styles from './itemsLayout.css';
 import {connect} from 'react-redux';
-import { fetchCharacters, editCharacter, deleteCharacter } from '../../action/index';
+import { fetchCharacters, editCharacter, deleteCharacter, sortBy} from '../../action/index';
 import {Field, reduxForm} from 'redux-form';
 
 import ItemsHandler from '../../component/ItemsHandler/ItemsHandler'
@@ -33,7 +33,9 @@ class ItemList extends Component {
         console.log('render item list');
         return (
             <div className={styles.listClass}>
-                <ItemsHandler newItem={this.initForm}/>
+                <ItemsHandler newItem={this.initForm}
+                              sort={this.sort}
+                />
                 <ItemsList characters={this.props.characters}
                            initForm={this.initForm}
                            deleteCharacter={this.deleteCharacter}
@@ -138,6 +140,10 @@ class ItemList extends Component {
             props : props
         };
     }
+
+    sort = sort =>  {
+        this.props.sortBy(sort);
+    };
 }
 
 
@@ -148,5 +154,5 @@ function mapStateToProps({ characters }) {
 export default reduxForm({
     form: 'editCharacterForm'
 })
-(connect(mapStateToProps, { fetchCharacters, editCharacter, deleteCharacter })(ItemList));
+(connect(mapStateToProps, { sortBy, fetchCharacters, editCharacter, deleteCharacter })(ItemList));
 

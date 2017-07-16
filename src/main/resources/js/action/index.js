@@ -3,6 +3,7 @@ import axios from 'axios';
 export const FETCH_CHARACTERS = 'FETCH_CHARACTERS';
 export const EDIT_CHARACTER  = 'EDIT_CHARACTER';
 export const DELETE_CHARACTER = 'DELETE_CHARACTER';
+export const SORT_BY = 'SORT_BY';
 
 export function fetchCharacters() {
     return {
@@ -24,4 +25,13 @@ export function deleteCharacter(character) {
         payload: axios.delete(`http://localhost:8080/character/${character.id}`)
     };
 }
+
+export function sortBy(sort) {
+    return {
+        type: SORT_BY,
+        payload: sort
+    };
+}
+
+
 

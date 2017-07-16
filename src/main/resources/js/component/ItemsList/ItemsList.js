@@ -5,12 +5,12 @@
 import React from 'react';
 import { Media, Button } from 'react-bootstrap';
 import styles from './itemsList.css';
+import _ from 'lodash';
 
 const ItemsList = props => {
-    let characters = props.characters.sort((nextCharacter, character) => character.created - nextCharacter.created);
     return (
         <div>
-            {  characters.map(character => {
+            {  props.characters.map(character => {
             return <Media key={character.id} className={styles.itemStyle}>
                 <Media.Left>
                     <img width={128} height={128} src={character.image}/>
