@@ -7,6 +7,7 @@ export const SORT_DESC = 'dsc';
 
 
 const ItemsHandler = props => {
+    console.log('render item Handler');
     return (
         <div className={styles.handler} >
         <div className={styles.handlerContent}>

@@ -16,6 +16,7 @@ class ItemsList extends Component {
     }
 
     render() {
+        console.info('item list');
         return (
             <div>
                 { this.renderCharacters() }
@@ -48,5 +49,5 @@ function mapStateToProps({ characters }) {
     return { characters };
 }
 
-export default connect(mapStateToProps, { fetchCharacters })(ItemsList);
+export default connect(mapStateToProps, { fetchCharacters, deleteCharacter })(ItemsList);
 

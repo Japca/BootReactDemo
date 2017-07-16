@@ -4,12 +4,12 @@
  *
  */
 
-import React, {Component}from 'react';
+import React, { Component }from 'react';
 import {Button, ButtonToolbar, FormGroup, ControlLabel,
     FormControl, Modal } from 'react-bootstrap';
 import styles from './itemsLayout.css';
 import {connect} from 'react-redux';
-import { fetchCharacters, editCharacter, deleteCharacter, sortBy} from '../../action/index';
+import { editCharacter, sortBy} from '../../action/index';
 import {Field, reduxForm} from 'redux-form';
 
 import ItemsHandler from '../../component/ItemsHandler/ItemsHandler'
@@ -24,16 +24,18 @@ class ItemsLayout extends Component {
         };
     }
 
+    shouldComponentUpdate(nextProps, nextState) {
+        return this.state !== nextState;
+    }
+
     render() {
-        console.log('render item list');
+        console.log('render item Layout');
         return (
             <div className={styles.listClass}>
                 <ItemsHandler newItem={this.initForm}
                               sort={this.sort}
                 />
-                <ItemsList  initForm={this.initForm}
-                           deleteCharacter={this.deleteCharacter}
-                />
+                <ItemsList  initForm={this.initForm} />
                 { this.renderModal() }
             </div>
         );
@@ -113,10 +115,6 @@ class ItemsLayout extends Component {
         this.closeModal();
     }
 
-    deleteCharacter = character => {
-        this.props.deleteCharacter(character);
-    };
-
     renderField(field) {
         let props = field.props;
         return (
@@ -148,5 +146,5 @@ function mapStateToProps({ characters }) {
 export default reduxForm({
     form: 'editCharacterForm'
 })
-(connect(mapStateToProps, { sortBy, editCharacter, deleteCharacter })(ItemsLayout));
+(connect(mapStateToProps, { sortBy, editCharacter })(ItemsLayout));
 
