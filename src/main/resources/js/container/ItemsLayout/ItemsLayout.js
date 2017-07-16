@@ -43,29 +43,6 @@ class ItemList extends Component {
         );
     }
 
-    renderCharactersList = () => {
-        let characters = this.props.characters.sort((nextCharacter, character) => character.created - nextCharacter.created);
-        return (
-            characters.map(character => {
-                return <Media key={character.id} className={styles.itemStyle}>
-                    <Media.Left>
-                        <img width={128} height={128} src={character.image}/>
-                    </Media.Left>
-                    <Media.Body>
-                        <Media.Heading className={styles.heading}>
-                            <a onClick={() => this.initForm(character)}>{character.name} </a>
-                            <Button bsStyle='danger' className='pull-right'
-                                    onClick={() => this.deleteCharacter(character)}>Delete</Button>
-                        </Media.Heading>
-                        <p>{character.profession}</p>
-                        <p>{character.description}</p>
-                        <p>{character.email}</p>
-                    </Media.Body>
-                </Media>;
-            })
-        );
-    };
-
     renderModal = () => {
         return (
             <Modal show={this.state.showModal} onHide={() => this.closeModal()}>
