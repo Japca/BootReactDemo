@@ -5,7 +5,7 @@
  */
 
 import React, {Component}from 'react';
-import {Media, Button, ButtonToolbar, FormGroup, ControlLabel,
+import {Button, ButtonToolbar, FormGroup, ControlLabel,
     FormControl, Modal } from 'react-bootstrap';
 import styles from './itemsLayout.css';
 import {connect} from 'react-redux';
@@ -34,11 +34,10 @@ class ItemList extends Component {
         return (
             <div className={styles.listClass}>
                 <ItemsHandler newItem={this.initForm}/>
-                {this.renderCharactersList()}
-                {/*<ItemsList characters={this.props.characters}*/}
-                           {/*initForm={this.initForm}*/}
-                           {/*deleteCharacter={this.deleteCharacter}*/}
-                {/*/>*/}
+                <ItemsList characters={this.props.characters}
+                           initForm={this.initForm}
+                           deleteCharacter={this.deleteCharacter}
+                />
                 { this.renderModal() }
             </div>
         );
