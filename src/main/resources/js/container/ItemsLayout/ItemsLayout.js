@@ -7,10 +7,13 @@
 import React, {Component}from 'react';
 import {Media, Button, ButtonToolbar, FormGroup, ControlLabel,
     FormControl, Modal } from 'react-bootstrap';
-import styles from './itemList.css';
+import styles from './itemsLayout.css';
 import {connect} from 'react-redux';
 import { fetchCharacters, editCharacter, deleteCharacter } from '../../action/index';
 import {Field, reduxForm} from 'redux-form';
+
+import ItemsHandler from '../../component/ItemsHandler/ItemsHandler'
+import ItemsList from "../../component/ItemsList/ItemsList";
 
 class ItemList extends Component {
 
@@ -30,24 +33,16 @@ class ItemList extends Component {
         console.log('render item list');
         return (
             <div className={styles.listClass}>
-                { this.renderAddButton() }
-                { this.renderCharactersList() }
+                <ItemsHandler newItem={this.initForm}/>
+                {this.renderCharactersList()}
+                {/*<ItemsList characters={this.props.characters}*/}
+                           {/*initForm={this.initForm}*/}
+                           {/*deleteCharacter={this.deleteCharacter}*/}
+                {/*/>*/}
                 { this.renderModal() }
             </div>
         );
     }
-
-    renderAddButton = () => {
-        return (
-            <div className={styles.centre}>
-                <Button bsStyle="success" onClick={() => this.initForm({})}>
-                    <span>
-                     <i className='fa fa-plus fa-lg' />
-                    </span>
-                    </Button>
-            </div>
-        );
-    };
 
     renderCharactersList = () => {
         let characters = this.props.characters.sort((nextCharacter, character) => character.created - nextCharacter.created);
@@ -128,12 +123,10 @@ class ItemList extends Component {
         );
     };
 
-
-
-    initForm(character) {
+    initForm = character => {
         this.props.initialize(character);
         this.openModal();
-    }
+    };
 
     openModal() {
            this.setState({ showModal: true });
@@ -148,9 +141,9 @@ class ItemList extends Component {
         this.closeModal();
     }
 
-    deleteCharacter(character) {
+    deleteCharacter = character => {
         this.props.deleteCharacter(character);
-    }
+    };
 
     renderField(field) {
         let props = field.props;

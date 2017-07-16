@@ -1,0 +1,23 @@
+.inline {
+    display: inline-block;
+}
+
+.handle {
+    text-align: center;
+    margin: auto;
+    background-color: #eeeeee;
+}
+
+.addButton {
+    margin-right: 8px;
+    margin-bottom: 16px;
+}
+
+.arrowUp {
+    margin-bottom: -6px;
+}
+
+.arrowDown {
+    margin: -16px;
+
+}

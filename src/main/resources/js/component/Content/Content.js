@@ -5,7 +5,7 @@
 
 import React from 'react';
 import SimpleTable from '../../container/Table/SimpleTable';
-import ItemList from '../../container/ItemList/ItemList';
+import ItemsLayout from '../../container/ItemsLayout/ItemsLayout';
 import {Route, Switch} from 'react-router-dom';
 import styles from './content.css';
 import {ROOT, PAGE_LIST, PAGE_TABLE} from '../Layout/Layout';
@@ -18,9 +18,9 @@ export default class Content extends React.Component {
         return (
             <div id='content' className={styles.contentClass}>
                 <Switch>
-                    <Route path={PAGE_LIST} component={ItemList}/>
+                    <Route path={PAGE_LIST} component={ItemsLayout}/>
                     <Route path={PAGE_TABLE} component={SimpleTable}/>
-                    <Route exact path={ROOT} component={ItemList}/>
+                    <Route exact path={ROOT} component={ItemsLayout}/>
                 </Switch>
             </div>
         );
