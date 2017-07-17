@@ -1,9 +1,8 @@
 
 .handler {
-
     display:table;
     margin-top: -5px;
-    margin-bottom: 5px;
+    margin-bottom: 6px;
     margin-right: auto;
     margin-left: auto;
 }
@@ -19,7 +18,7 @@
     transition: box-shadow 200ms cubic-bezier(0.4, 0.0, 0.2, 1);
 }
 
-.addButton {
+.itemMargin {
     margin-right: 5px;
 }
 

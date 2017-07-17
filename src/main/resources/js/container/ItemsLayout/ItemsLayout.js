@@ -32,9 +32,7 @@ class ItemsLayout extends Component {
         console.log('render item Layout');
         return (
             <div className={styles.listClass}>
-                <ItemsHandler newItem={this.initForm}
-                              sort={this.sort}
-                />
+                <ItemsHandler newItem={this.initForm} />
                 <ItemsList  initForm={this.initForm} />
                 { this.renderModal() }
             </div>
@@ -132,10 +130,6 @@ class ItemsLayout extends Component {
             props : props
         };
     }
-
-    sort = sort =>  {
-        this.props.sortBy(sort);
-    };
 }
 
 
@@ -146,5 +140,5 @@ function mapStateToProps({ characters }) {
 export default reduxForm({
     form: 'editCharacterForm'
 })
-(connect(mapStateToProps, { sortBy, editCharacter })(ItemsLayout));
+(connect(mapStateToProps, { editCharacter })(ItemsLayout));
 
