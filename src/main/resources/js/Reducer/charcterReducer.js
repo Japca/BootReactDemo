@@ -31,7 +31,7 @@ function updateCharacter(state, character) {
 }
 
 function sortCharacters(characters, sort) {
-    let sortedCharacters = _.sortBy(characters, character => { return character.created; });
+    let sortedCharacters = _.sortBy(characters, [sort.type]);
     return sort.order === SORT_ASC ? _.reverse(sortedCharacters) : sortedCharacters;
 }
 

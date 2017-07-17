@@ -49,5 +49,5 @@ function mapStateToProps({ characters }) {
     return { characters };
 }
 
-export default connect(mapStateToProps, { fetchCharacters, deleteCharacter, editCharacter })(ItemsList);
+export default connect(mapStateToProps, { fetchCharacters, deleteCharacter })(ItemsList);
 
