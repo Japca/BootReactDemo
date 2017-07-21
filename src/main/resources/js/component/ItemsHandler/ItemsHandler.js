@@ -8,14 +8,26 @@ export const SORT_ASC = 'asc';
 export const SORT_DESC = 'dsc';
 export const CREATED = 'created';
 
-export const CHARACTER_PROPERTIES = [CREATED, 'name', 'profession', 'description', 'email'];
+const ARROW_UP = 'arrow-up';
+const ARROW_DOWN = 'arrow-down';
 
-var Sort = {
+const CHARACTER_PROPERTIES = [CREATED, 'name', 'profession', 'description', 'email'];
+
+
+
+let Sort = {
   order:  SORT_ASC,
   type: CREATED
 };
 
 class ItemsHandler extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            selected : ARROW_UP
+        }
+    }
 
     shouldComponentUpdate(nextProps, nextState) {
         return this.state !== nextState;
@@ -33,17 +45,19 @@ class ItemsHandler extends Component {
                         <FormControl onChange={this.onSelectChange.bind(this)} componentClass="select" placeholder="select">
                             { CHARACTER_PROPERTIES.map(function (key) {
                                 return (
-                                    <option onSelect={() =>  console.log("s")} key={key} value={key}>{key}</option>
+                                    <option key={key} value={key}>{key}</option>
                                 );
                             })
                             }
                         </FormControl>
                     </form>
                     <div className={styles.arrowDiv}>
-                        <div onClick={() => this.sort({...Sort, order: SORT_ASC})} className={styles.arrowUp}><i
-                            className="fa fa-caret-up fa-2x"/></div>
-                        <div onClick={() => this.sort({...Sort, order: SORT_DESC})} className={styles.arrowDown}><i
-                            className="fa fa-caret-down fa-2x"/></div>
+                        <div onClick={() => this.sort({...Sort, order: SORT_ASC})} className={[styles.arrowUp, this.isSelected(ARROW_UP)].join(' ')}>
+                            <i className="fa fa-caret-up fa-2x"/>
+                        </div>
+                        <div onClick={() => this.sort({...Sort, order: SORT_DESC})} className={[styles.arrowDown, this.isSelected(ARROW_DOWN)].join(' ')}>
+                            <i className="fa fa-caret-down fa-2x"/>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -55,8 +69,13 @@ class ItemsHandler extends Component {
     }
 
     sort(sort) {
+        this.setState({ selected :sort.order === SORT_ASC ? ARROW_UP : ARROW_DOWN });
         this.props.sortBy(sort);
     }
+
+    isSelected = value => {
+        return (value === this.state.selected) ? styles.selected: styles.arrow;
+    };
 }
 
 function mapStateToProps({ characters }) {

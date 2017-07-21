@@ -34,6 +34,11 @@
     color: #202050;
 }
 
+.selected {
+    color: #202050;
+}
+
+
 .arrowUp {
     composes:arrow;
     margin-bottom: -11px;
