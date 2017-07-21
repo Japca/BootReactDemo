@@ -28,27 +28,45 @@ public class CharacterGenerator implements Generator<Character> {
     @Value("${public.image.folder}")
     private String publicFolder;
 
+    @Value("${email.sign}")
+    private String emailSign;
+
+    @Value("${dot}")
+    private String dot;
+
     @Override
     public List<Character> generate() {
         return Arrays.stream(getImages().list())
                 .map(imageName -> new Character(
                         publicFolder.concat(imageName),
                         generateName(20),
-                        generateString(20),
-                        generateString(200),
-                        generateString(21),
+                        generateStringFirstUpperCase(generateValueFromTo(13, 18)),
+                        generateDescription(generateValueFromTo(15, 25)),
+                        generateEmail(),
                         Calendar.getInstance().getTime())
                         ).collect(toList());
     }
 
     public String generateName(int count) {
         int nameLength = count / 2;
-        return new StringBuilder().
-                append(generateString(nameLength)).
-                append(StringUtils.SPACE).
-                append(generateString(count)).
-                toString();
+        return new StringBuilder()
+                .append(generateStringFirstUpperCase(nameLength))
+                .append(StringUtils.SPACE)
+                .append(generateStringFirstUpperCase(count))
+                .toString();
 
+    }
+
+    public String generateEmail() {
+        return new StringBuilder()
+                .append(generateStringLowerCase(generateValueFromTo(4, 7)))
+                .append(dot)
+                .append(generateStringLowerCase(generateValueFromTo(5, 10)))
+                .append(emailSign)
+                .append(generateStringLowerCase(generateValueFromTo(4, 6)))
+                .append(dot)
+                .append(generateStringLowerCase(generateValueFromTo(2, 3)))
+                .toString();
     }
 
     private File getImages() {

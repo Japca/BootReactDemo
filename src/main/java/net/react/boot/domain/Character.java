@@ -1,9 +1,6 @@
 package net.react.boot.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
 
 /**
@@ -20,6 +17,7 @@ public class Character {
     private String image;
     private String name;
     private String profession;
+    @Column(columnDefinition="TEXT")
     private String description;
     private String email;
     private Date created;

@@ -27,15 +27,15 @@
 }
 
 .arrow {
-    color: #aaaaaa;
+    color: #e8e9ea;
 }
 
 .arrow:hover {
-    color: #202050;
+    color: #8c9299;
 }
 
 .selected {
-    color: #202050;
+    color: #8c9299;
 }
 
 
