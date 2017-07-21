@@ -6,7 +6,8 @@ import React, { Component } from 'react';
 import { Media, Button } from 'react-bootstrap';
 import styles from './itemsList.css';
 import {connect} from 'react-redux';
-import { fetchCharacters, editCharacter, deleteCharacter } from '../../action/index';
+import { fetchCharacters, deleteCharacter } from '../../action/index';
+
 
 
 class ItemsList extends Component {
@@ -49,5 +50,5 @@ function mapStateToProps({ characters }) {
     return { characters };
 }
 
-export default connect(mapStateToProps, { fetchCharacters, deleteCharacter })(ItemsList);
+export default connect(mapStateToProps, {fetchCharacters, deleteCharacter })(ItemsList);
 

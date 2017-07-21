@@ -1,6 +1,6 @@
 import { FETCH_CHARACTERS, EDIT_CHARACTER, DELETE_CHARACTER,
          SORT_BY } from  "../action/index";
-import { SORT_ASC } from '../component/ItemsHandler/ItemsHandler'
+import {SORT_ASC, SORT_DESC} from '../container/ItemsHandler/ItemsHandler'
 import _ from "lodash";
 
 export default function (state = [], action) {
@@ -31,8 +31,9 @@ function updateCharacter(state, character) {
 }
 
 function sortCharacters(characters, sort) {
+    debugger;
     let sortedCharacters = _.sortBy(characters, [sort.type]);
-    return sort.order === SORT_ASC ? _.reverse(sortedCharacters) : sortedCharacters;
+    return sort.order === SORT_DESC ? _.reverse(sortedCharacters) : sortedCharacters;
 }
 
 

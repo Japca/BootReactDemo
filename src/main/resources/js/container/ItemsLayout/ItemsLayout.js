@@ -12,7 +12,7 @@ import {connect} from 'react-redux';
 import { editCharacter, sortBy} from '../../action/index';
 import {Field, reduxForm} from 'redux-form';
 
-import ItemsHandler from '../../component/ItemsHandler/ItemsHandler'
+import ItemsHandler from '../../container/ItemsHandler/ItemsHandler'
 import ItemsList from "../ItemsList/ItemsList";
 
 class ItemsLayout extends Component {

@@ -15,8 +15,8 @@ const CHARACTER_PROPERTIES = [CREATED, 'name', 'profession', 'description', 'ema
 
 
 
-let Sort = {
-  order:  SORT_ASC,
+export var Sort = {
+  order:  SORT_DESC,
   type: CREATED
 };
 
