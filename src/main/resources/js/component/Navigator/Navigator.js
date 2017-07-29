@@ -1,44 +1,36 @@
-import React, { Component } from 'react';
-import { Nav, NavItem } from 'react-bootstrap';
-import { withRouter } from 'react-router-dom';
-import { ROOT, PAGE_LIST, PAGE_TABLE } from '../Layout/Layout';
+import React, {Component} from 'react';
+import {withRouter} from 'react-router-dom';
+import {ROOT, PAGE_LIST, PAGE_TABLE, PAGE_3, PAGE_4} from '../Layout/Layout';
+import styles from './navigator.css'
 
 class Navigator extends Component {
 
     constructor(props) {
         super(props);
-        let { location : { pathname } } = props.history;
+        let {location: {pathname}} = props.history;
         this.state = {
-            activeKey: pathname === ROOT ? PAGE_LIST : pathname
+            activeKey: pathname === ROOT ? PAGE_LIST : pathname,
         };
     }
 
     render() {
         console.log('Navigator');
         return (
-            <div id='navigator'>
-                <Nav bsStyle='tabs' activeKey={this.state.activeKey} onSelect={this.handleSelect}>
-                    <NavItem eventKey={PAGE_LIST}>List</NavItem>
-                    <NavItem eventKey={PAGE_TABLE}>Table</NavItem>
-                </Nav>
+            <div className={[styles.clear, styles.mainNavDiv].join(' ')}>
+                <ul className={styles.mainNav}>
+                    <div className={styles.reactLogo}><img src="img/reactLogo/reactLogo.png"/></div>
+                    <li><a className={this.isSelected(PAGE_LIST)} href={PAGE_LIST}>List</a></li>
+                    <li><a className={this.isSelected(PAGE_TABLE)} href={PAGE_TABLE}>Table</a></li>
+                    <li><a className={this.isSelected(PAGE_3)} href={PAGE_3}>Page 3</a></li>
+                    <li><a className={this.isSelected(PAGE_4)} href={PAGE_4}>page 4</a></li>
+                </ul>
             </div>
         );
     }
 
-    handleSelect = eventKey => {
-        const { history: { push }} = this.props;
-        this.setState({activeKey: eventKey});
 
-        switch (eventKey) {
-            case PAGE_LIST :
-                push(PAGE_LIST);
-                break;
-            case PAGE_TABLE :
-                push(PAGE_TABLE);
-                break;
-            default :
-                push(ROOT);
-        }
+    isSelected = value => {
+        return (value === this.state.activeKey) ? styles.selected : "";
     };
 }
 

@@ -6,6 +6,7 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, compose } from 'redux';
 import { reducers } from './Reducer/index.js';
 import ReduxPromise from 'redux-promise';
+import reset from '../static/css/reset.css';
 
 
 

@@ -31,11 +31,11 @@
 }
 
 .arrow:hover {
-    color: #8c9299;
+    color: rgba(0, 0, 0, .4);
 }
 
 .selected {
-    color: #8c9299;
+    color: rgba(0, 0, 0, .4);
 }
 
 
