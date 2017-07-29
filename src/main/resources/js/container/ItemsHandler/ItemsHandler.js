@@ -38,7 +38,7 @@ class ItemsHandler extends Component {
         return (
             <div className={styles.handler}>
                 <div className={styles.handlerContent}>
-                    <Button className={styles.itemMargin} bsStyle="success" onClick={() => this.props.newItem({})}>
+                    <Button className={styles.itemMargin} title="Add Character" bsStyle="success" onClick={() => this.props.newItem({})}>
                         <i className='fa fa-plus fa-lg'/>
                     </Button>
                     <form className={styles.itemMargin}>

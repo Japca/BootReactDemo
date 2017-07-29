@@ -66,4 +66,29 @@
     align-self: flex-start;
 }
 
+.reactLogo img {
+    -webkit-animation: spin ease-in-out 1s;
+    -moz-animation: spin ease-in-out 1s;
+    animation: spin ease-in-out 1s
+}
+
+@-moz-keyframes spin {
+    100% {
+        -moz-transform: rotate(360deg);
+    }
+}
+
+@-webkit-keyframes spin {
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@keyframes spin {
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
 

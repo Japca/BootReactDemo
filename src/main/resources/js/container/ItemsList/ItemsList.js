@@ -31,11 +31,11 @@ class ItemsList extends Component {
                 </div>
 
                 <div className={styles.buttonLayout}>
-                    <a className={styles.itemButton} onClick={() => this.props.initForm(character)} >
-                        <i className='fa fa-pencil fa-lg'/>
+                    <a className={[styles.itemButton, "showTooltip"].join(' ')}  title="Update Character" onClick={() => this.props.initForm(character)}>
+                       <i className='fa fa-pencil fa-lg'/>
                     </a>
-                    <a className={styles.itemButton} onClick={() => this.props.deleteCharacter(character)}>
-                        <i className='fa fa-times fa-lg'/>
+                       <a className={[styles.itemButton, "showTooltip"].join(' ')} title="Delete Character"onClick={() => this.props.deleteCharacter(character)}>
+                       <i className='fa fa-times fa-lg'/>
                     </a>
                 </div>
 
@@ -45,7 +45,6 @@ class ItemsList extends Component {
                     <p>{character.description}</p>
                     <p>{character.email}</p>
                 </div>
-
             </div>;
         });
     };
