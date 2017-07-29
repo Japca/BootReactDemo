@@ -28,6 +28,7 @@
     text-decoration: none;
     -webkit-transition: 0.25s background-color linear;
     transition: 0.25s background-color linear;
+    font-weight: 600;
 }
 
 .mainNav li:last-child a {
@@ -36,7 +37,7 @@
 
 .mainNav li a.selected {
     background-color: #fff;
-    color: rgba(0, 0, 0, .4);
+    color: rgba(0, 0, 0, .5);
     text-decoration: none;
     font-weight: 600;
     border-radius: 2px;
@@ -47,7 +48,7 @@
 .mainNav li a:hover,
 .mainNav li a.active {
     background-color: #fff;
-    color: rgba(0, 0, 0, .4);
+    color: rgba(0, 0, 0, .5);
     text-decoration: none;
     font-weight: 600;
     border-radius: 2px;

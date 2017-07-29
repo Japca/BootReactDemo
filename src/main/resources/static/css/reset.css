@@ -37,6 +37,23 @@ ol, ul {
 blockquote, q {
     quotes: none;
 }
+
+h1 {
+    font-size: 150%;
+}
+
+h2 {
+    font-size: 140%;
+}
+
+h3 {
+    font-size: 130%;
+}
+
+h4 {
+    font-size: 120%;
+}
+
 blockquote:before, blockquote:after,
 q:before, q:after {
     content: '';
