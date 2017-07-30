@@ -31,7 +31,7 @@ class ItemsLayout extends Component {
     render() {
         console.log('render item Layout');
         return (
-            <div className={styles.listClass}>
+            <div className={styles.containter}>
                 <ItemsHandler newItem={this.initForm} />
                 <ItemsList  initForm={this.initForm} />
                 { this.renderModal() }

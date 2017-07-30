@@ -11,10 +11,7 @@ import styles from './content.css';
 import {ROOT, PAGE_LIST, PAGE_TABLE} from '../Layout/Layout';
 
 
-export default class Content extends React.Component {
-
-    render() {
-        console.log('content');
+const Content = () => {
         return (
             <div id='content' className={styles.contentClass}>
                 <Switch>
@@ -24,8 +21,6 @@ export default class Content extends React.Component {
                 </Switch>
             </div>
         );
-    }
+};
 
-
-
-}
+export default Content;

@@ -5,7 +5,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const VENDOR_LIBS = [
-    'react', 'react-dom', 'react-redux', 'react-bootstrap',
+    'react', 'react-dom', 'react-redux', 'react-bootstrap', 'react-router-dom',
     'redux', 'redux-promise', 'redux-form',
     'lodash', 'axios',
 ];
