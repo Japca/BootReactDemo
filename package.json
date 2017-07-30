@@ -33,12 +33,14 @@
     "react-rpm": "^1.0.1",
     "rimraf": "^2.6.1",
     "webpack": "^2.3.2",
+    "webpack-bundle-analyzer": "^2.8.3",
     "webpack-dev-server": "^2.5.1"
   },
   "scripts": {
     "dev": "webpack-dev-server --content-base src/main/resources/static --inline --hot",
     "clean": "rimraf src/main/resources/public",
-    "build": "npm run clean && webpack -p --progress --display-modules ",
+    "build": "npm run clean webpack --progress --display-modules ",
+    "mavenBuild": "rimraf src/main/resources/public && webpack -p --progress --display-modules ",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

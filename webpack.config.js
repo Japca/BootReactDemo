@@ -3,7 +3,7 @@ const webpack = require('webpack');
 const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const VENDOR_LIBS = [
     'react', 'react-dom', 'react-redux', 'react-bootstrap', 'react-router-dom',
     'redux', 'redux-promise', 'redux-form',
@@ -41,7 +41,7 @@ module.exports = {
         historyApiFallback: true
     },
 
-    devtool: debug ? 'inline-sourcemap' : null,
+    devtool: '#eval-source-map',
 
     plugins: [
         new ExtractTextPlugin('style.css'),
@@ -51,6 +51,26 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: 'src/main/resources/templates/index.html'
         })
-
     ],
 };
+
+
+if (process.env.NODE_ENV === 'production') {
+    module.exports.devtool = '#cheap-source-map';
+    module.exports.plugins = (module.exports.plugins || module.plugins).concat([
+        new webpack.DefinePlugin({
+            'process.env': {
+                NODE_ENV: '"production"'
+            }
+        }),
+        new webpack.optimize.UglifyJsPlugin({
+            sourceMap: true,
+            compress: {
+                warnings: false
+            }
+        }),
+        new webpack.LoaderOptionsPlugin({
+            minimize: true
+        })
+    ]);
+}

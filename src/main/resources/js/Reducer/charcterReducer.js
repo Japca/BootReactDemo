@@ -1,7 +1,7 @@
 import { FETCH_CHARACTERS, EDIT_CHARACTER, DELETE_CHARACTER,
          SORT_BY } from  "../action/index";
 import {SORT_ASC, SORT_DESC} from '../container/ItemsHandler/ItemsHandler'
-import _ from "lodash";
+import { findIndex, reverse } from "lodash";
 
 export default function (state = [], action) {
     switch (action.type) {
@@ -19,21 +19,21 @@ export default function (state = [], action) {
 };
 
 function deleteCharacter(state, character) {
-    let index = _.findIndex(state, { id : character.id });
+    let index = findIndex(state, { id : character.id });
     state.splice(index, 1);
     return state;
 }
 
 function updateCharacter(state, character) {
-    let index = _.findIndex(state, { id : character.id });
+    let index = findIndex(state, { id : character.id });
     state.splice(index, 1, character);
     return state;
 }
 
 function sortCharacters(characters, sort) {
     debugger;
-    let sortedCharacters = _.sortBy(characters, [sort.type]);
-    return sort.order === SORT_DESC ? _.reverse(sortedCharacters) : sortedCharacters;
+    let sortedCharacters = sortBy(characters, [sort.type]);
+    return sort.order === SORT_DESC ? reverse(sortedCharacters) : sortedCharacters;
 }
 
 

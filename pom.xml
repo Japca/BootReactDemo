@@ -23,6 +23,7 @@
         <frondEnd-version>1.4</frondEnd-version>
         <nodeVersion>v4.7.0</nodeVersion>
         <npmVersion>2.15.9</npmVersion>
+        <NODE_ENV>production</NODE_ENV>
     </properties>
 
     <dependencies>
@@ -90,6 +91,13 @@
                 <groupId>com.github.eirslett</groupId>
                 <artifactId>frontend-maven-plugin</artifactId>
                 <version>${frondEnd-version}</version>
+                <configuration>
+                    <environmentVariables>
+                        <NODE_ENV>${NODE_ENV}</NODE_ENV>
+                    </environmentVariables>
+                    <arguments>build</arguments>
+                </configuration>
+
                 <executions>
                     <execution>
                         <id>install node and npm</id>
@@ -112,9 +120,14 @@
                     <execution>
                         <id>webpack build</id>
                         <goals>
-                            <goal>webpack</goal>
+                            <goal>npm</goal>
+
                         </goals>
+                        <configuration>
+                            <arguments>run mavenBuild</arguments>
+                        </configuration>
                     </execution>
+
                 </executions>
             </plugin>
         </plugins>

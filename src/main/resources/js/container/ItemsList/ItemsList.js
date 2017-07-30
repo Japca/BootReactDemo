@@ -37,20 +37,26 @@ class ItemsList extends Component {
                     <div className={styles.email}>  <p>{character.email}</p> </div>
                 </div>
 
-                <div className={styles.buttonLayout}>
-                    <a className={[styles.itemButton, "showTooltip"].join(' ')} title="Update Character"
-                       onClick={() => this.props.initForm(character)}>
-                        <i className='fa fa-pencil fa-lg'/>
-                    </a>
-                    <a className={[styles.itemButton, "showTooltip"].join(' ')} title="Delete Character"
-                       onClick={() => this.props.deleteCharacter(character)}>
-                        <i className='fa fa-times fa-lg'/>
-                    </a>
-                </div>
-
+                { this.addOverlay(character) }
             </div>;
         });
     };
+
+
+    addOverlay = (character) => {
+       return (
+           <div className={styles.buttonLayout}>
+               <a className={[styles.itemButton, "showTooltip"].join(' ')} title="Update Character"
+                  onClick={() => this.props.initForm(character)}>
+                   <i className='fa fa-pencil fa-lg'/>
+               </a>
+               <a className={[styles.itemButton, "showTooltip"].join(' ')} title="Delete Character"
+                  onClick={() => this.props.deleteCharacter(character)}>
+                   <i className='fa fa-times fa-lg'/>
+               </a>
+           </div>
+       );
+    }
 }
 
 function mapStateToProps({characters}) {
@@ -59,23 +65,3 @@ function mapStateToProps({characters}) {
 
 export default connect(mapStateToProps, {fetchCharacters, deleteCharacter})(ItemsList);
 
-
-// renderCharacters = () => {
-//     return this.props.characters.map(character => {
-//         return <Media key={character.id} className={styles.itemStyle}>
-//             <Media.Left>
-//                 <img width={128} height={128} src={character.image}/>
-//             </Media.Left>
-//             <Media.Body>
-//                 <Media.Heading className={styles.heading}>
-//                     <a onClick={() => this.props.initForm(character)}>{character.name} </a>
-//                     <Button bsStyle='danger' className='pull-right'
-//                             onClick={() => this.props.deleteCharacter(character)}>Delete</Button>
-//                 </Media.Heading>
-//                 <p>{character.profession}</p>
-//                 <p>{character.description}</p>
-//                 <p>{character.email}</p>
-//             </Media.Body>
-//         </Media>;
-//     });
-// };
