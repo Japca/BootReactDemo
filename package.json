@@ -39,7 +39,7 @@
   "scripts": {
     "dev": "webpack-dev-server --content-base src/main/resources/static --inline --hot",
     "clean": "rimraf src/main/resources/public",
-    "build": "npm run clean webpack -p --progress --display-modules ",
+    "build": "npm run clean && webpack -p --progress --display-modules ",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
