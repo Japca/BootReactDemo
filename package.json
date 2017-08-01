@@ -31,10 +31,10 @@
     "install": "^0.10.1",
     "npm": "^5.1.0",
     "react-rpm": "^1.0.1",
-    "webpack": "^2.3.2",
+    "rimraf": "^2.6.1",
+    "webpack": "^2.7.0",
     "webpack-bundle-analyzer": "^2.8.3",
-    "webpack-dev-server": "^2.5.1",
-    "rimraf": "^2.6.1"
+    "webpack-dev-server": "^2.5.1"
   },
   "scripts": {
     "dev": "webpack-dev-server --content-base src/main/resources/static --inline --hot",
