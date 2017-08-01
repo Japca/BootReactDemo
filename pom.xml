@@ -120,11 +120,12 @@
                     <execution>
                         <id>webpack build</id>
                         <goals>
-                            <goal>npm</goal>
-
+                            <goal>webpack</goal>
                         </goals>
+                        <phase>generate-resources</phase>
+
                         <configuration>
-                            <arguments>run mavenBuild</arguments>
+                            <arguments>-p</arguments>
                         </configuration>
                     </execution>
 
