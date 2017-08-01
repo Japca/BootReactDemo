@@ -41,6 +41,7 @@
     "clean": "rimraf src/main/resources/public",
     "build": "npm run clean webpack --progress --display-modules ",
     "mavenBuild": "webpack -p --progress --display-modules",
+
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
