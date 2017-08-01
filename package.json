@@ -17,6 +17,7 @@
     "redux-promise": "^0.5.3",
     "webpack": "^2.7.0"
   },
+
   "devDependencies": {
     "babel-cli": "^6.23.0",
     "babel-core": "^6.24.0",
