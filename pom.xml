@@ -124,7 +124,6 @@
                         <goals>
                             <goal>webpack</goal>
                         </goals>
-                        <phase>generate-resources</phase>
                         <configuration>
                             <arguments>-p</arguments>
                         </configuration>

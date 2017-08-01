@@ -14,7 +14,8 @@
     "react-router-dom": "^4.0.0",
     "redux": "^3.7.1",
     "redux-form": "^6.8.0",
-    "redux-promise": "^0.5.3"
+    "redux-promise": "^0.5.3",
+    "webpack": "^2.7.0"
   },
   "devDependencies": {
     "babel-cli": "^6.23.0",
@@ -40,6 +41,7 @@
     "dev": "webpack-dev-server --content-base src/main/resources/static --inline --hot",
     "clean": "rimraf src/main/resources/public",
     "build": "npm run clean && webpack -p --progress --display-modules ",
+    "mavenBuild": "webpack -p --progress --display-modules ",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
