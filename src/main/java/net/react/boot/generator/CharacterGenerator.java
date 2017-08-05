@@ -1,13 +1,12 @@
 package net.react.boot.generator;
 
-import net.react.boot.ReactBootDemo;
 import net.react.boot.domain.Character;
 import org.apache.commons.lang3.StringUtils;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.ResourceLoader;
 import org.springframework.stereotype.Component;
 
-import java.io.File;
-import java.net.URL;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
@@ -17,10 +16,11 @@ import static java.util.stream.Collectors.toList;
 
 /**
  * Created by Jakub krhovják on 6/17/17.
- *
  */
 @Component
 public class CharacterGenerator implements Generator<Character> {
+
+    private org.slf4j.Logger log = LoggerFactory.getLogger(getClass());
 
     @Value("${images.folder}")
     private String imagesFolder;
@@ -34,9 +34,15 @@ public class CharacterGenerator implements Generator<Character> {
     @Value("${dot}")
     private String dot;
 
+    private ResourceLoader resourceLoader;
+
+    List<String> pictures = Arrays.asList(
+            "elliot.jpg", "elyse.png", "helen.jpg", "jenny.jpg", "justen.jpg", "kristy.png", "daniel.jpg",
+            "matthew.png", "molly.png", "steve.jpg", "stevie.jpg", "veronika.jpg");
+
     @Override
     public List<Character> generate() {
-        return Arrays.stream(getImages().list())
+        return pictures.stream()
                 .map(imageName -> new Character(
                         publicFolder.concat(imageName),
                         generateName(20),
@@ -44,10 +50,10 @@ public class CharacterGenerator implements Generator<Character> {
                         generateDescription(generateValueFromTo(15, 25)),
                         generateEmail(),
                         Calendar.getInstance().getTime())
-                        ).collect(toList());
+                ).collect(toList());
     }
 
-    public String generateName(int count) {
+    String generateName(int count) {
         int nameLength = count / 2;
         return new StringBuilder()
                 .append(generateStringFirstUpperCase(nameLength))
@@ -57,7 +63,7 @@ public class CharacterGenerator implements Generator<Character> {
 
     }
 
-    public String generateEmail() {
+    private String generateEmail() {
         return new StringBuilder()
                 .append(generateStringLowerCase(generateValueFromTo(4, 7)))
                 .append(dot)
@@ -69,14 +75,8 @@ public class CharacterGenerator implements Generator<Character> {
                 .toString();
     }
 
-    private File getImages() {
-        URL url = ReactBootDemo.class.getClassLoader().getResource(imagesFolder);
-        return new File(url.getPath());
-    }
-
     public String generateImage() {
-        File images = getImages();
-        int index = new Random().nextInt(images.listFiles().length);
-        return publicFolder.concat(images.listFiles()[index].getName());
+        int index = new Random().nextInt(pictures.size());
+        return publicFolder.concat(pictures.get(index));
     }
 }
