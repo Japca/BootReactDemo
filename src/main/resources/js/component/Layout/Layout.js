@@ -1,7 +1,7 @@
 import React from 'react';
 import Navigator from '../Navigator/Navigator';
 import Content from '../Content/Content';
-import {BrowserRouter as Router } from 'react-router-dom';
+import {HashRouter as Router } from 'react-router-dom';
 import styles from './layout.css';
 
 export const PAGE_LIST = '/list';
