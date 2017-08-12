@@ -1,5 +1,6 @@
 
 .contentClass {
-    padding: 10px;
-    background-color: white;
+    margin:0 10px 10px 10px;
+    padding-top: 60px;
+    /*background-color: rgba(0, 0, 0, 0.02);*/
 }

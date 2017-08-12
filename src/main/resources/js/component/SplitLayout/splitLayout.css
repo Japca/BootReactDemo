@@ -1,0 +1,22 @@
+.content {
+    width: 100%;
+    height: 250px;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "leftBox rightBox";
+    grid-gap: 2%;
+}
+
+.leftBox {
+    grid-area: leftBox;
+    background-color: #202050;
+    opacity: 0.4;
+}
+
+.rightBox {
+    grid-area: rightBox;
+    background-color: #202050;
+    opacity: 0.4;
+}
+

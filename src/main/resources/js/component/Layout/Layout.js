@@ -15,7 +15,7 @@ const Layout = () => {
     return (
         <div className={styles.mainLayout}>
             <Router>
-                <div>
+                <div className={styles.mainLayout}>
                     <Navigator/>
                     <Content/>
                 </div>

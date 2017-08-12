@@ -16,8 +16,7 @@ class Navigator extends Component {
     render() {
         console.log('Navigator');
            return (
-
-            <div className={[styles.clear, styles.mainNavDiv].join(' ')}>
+            <div className={styles.mainNavDiv}>
                 <ul className={styles.mainNav}>
                     <div className={styles.reactLogo}><img src="img/reactLogo/reactLogo.png"/></div>
                     <li><a onClick={() => this.handleSelect(PAGE_LIST)} className={this.isSelected(PAGE_LIST)}>List</a></li>
@@ -34,7 +33,7 @@ class Navigator extends Component {
     };
 
     handleSelect(eventKey)  {
-        const {history: { push }} = this.props;
+        const {history: { push, add}} = this.props;
         this.setState({activeKey: eventKey});
         switch (eventKey) {
             case PAGE_LIST :
@@ -50,7 +49,7 @@ class Navigator extends Component {
                 push(PAGE_4);
                 break;
             default :
-                push(ROOT);
+                add(ROOT);
         }
     };
 }
