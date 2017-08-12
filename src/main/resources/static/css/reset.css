@@ -77,10 +77,10 @@ table {
 }
 
 
-@font-face {
-    font-family: RostockKaligraph;
-    src: url("../fonts/RostockKaligraph.ttf");
-}
+/*@font-face {*/
+    /*font-family: RostockKaligraph;*/
+    /*src: url("../fonts/RostockKaligraph.ttf");*/
+/*}*/
 
 /*Image float grid*/
 /*img, iframe, video, object {*/

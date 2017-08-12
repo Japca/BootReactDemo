@@ -7,6 +7,8 @@ import styles from './itemsList.css';
 import {connect} from 'react-redux';
 import {fetchCharacters, deleteCharacter} from '../../action/index';
 
+import { values } from 'lodash';
+
 
 class ItemsList extends Component {
 
@@ -24,24 +26,23 @@ class ItemsList extends Component {
     }
 
     renderCharacters = () => {
-        return this.props.characters.map(character => {
+        return values(this.props.characters).map(character => {
             return <div key={character.id} className={styles.item}>
                 <div>
                     <img width={128} height={128} src={character.image}/>
                 </div>
 
-                 <div className={styles.content}>
+                <div className={styles.content}>
                     <h3> {character.name}</h3>
                     <h4>{character.profession}</h4>
                     <p>{character.description}</p>
-                    <div className={styles.email}>  <p>{character.email}</p> </div>
+                    <div className={styles.email}><p>{character.email}</p></div>
                 </div>
 
-                { this.addOverlay(character) }
+                {this.addOverlay(character)}
             </div>;
         });
     };
-
 
     addOverlay = (character) => {
        return (

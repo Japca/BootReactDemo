@@ -8,6 +8,8 @@ import {Table, thead, tr, th} from 'react-bootstrap';
 import {connect} from "react-redux";
 import {fetchCharacters} from "../../action/index";
 import styles from './SimpleTable.css';
+import { values } from 'lodash';
+
 
 class SimpleTable extends Component {
 
@@ -25,7 +27,7 @@ class SimpleTable extends Component {
     }
 
     renderTable = () => {
-        let characters = this.props.characters;
+        let characters = values(this.props.characters);
         return (
             <Table striped bordered condensed hover className={styles.table}>
                 <thead>
