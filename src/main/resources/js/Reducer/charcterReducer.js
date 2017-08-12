@@ -1,6 +1,6 @@
 import { FETCH_CHARACTERS, EDIT_CHARACTER, DELETE_CHARACTER,
          SORT_BY } from  "../action/index";
-import {SORT_ASC, SORT_DESC} from '../container/ItemsHandler/ItemsHandler'
+import {SORT_ASC, SORT_DESC} from '../container/ItemsHandler/ItemsHandler';
 import { findIndex, reverse } from "lodash";
 
 export default function (state = [], action) {
@@ -17,6 +17,7 @@ export default function (state = [], action) {
             return state;
     }
 };
+
 
 function deleteCharacter(state, character) {
     let index = findIndex(state, { id : character.id });

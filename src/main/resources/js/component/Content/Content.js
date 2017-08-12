@@ -20,7 +20,7 @@ const Content = () => {
                     <Route path={PAGE_LIST} component={ItemsLayout}/>
                     <Route path={PAGE_TABLE} component={SimpleTable}/>
                     <Route path={PAGE_3} component={Page3}/>
-                    <Route path={PAGE_4} component={PAGE_4}/>
+                    <Route path={PAGE_4} component={Page4}/>
                     <Route exact path={ROOT} component={ItemsLayout}/>
                 </Switch>
             </div>

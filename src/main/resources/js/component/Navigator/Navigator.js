@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import {withRouter} from 'react-router-dom';
 import {ROOT, PAGE_LIST, PAGE_TABLE, PAGE_3, PAGE_4} from '../Layout/Layout';
 import styles from './navigator.css'
-import { Nav, NavItem } from 'react-bootstrap';
 
 class Navigator extends Component {
 
@@ -37,7 +36,6 @@ class Navigator extends Component {
     handleSelect(eventKey)  {
         const {history: { push }} = this.props;
         this.setState({activeKey: eventKey});
-        debugger;
         switch (eventKey) {
             case PAGE_LIST :
                 push(PAGE_LIST);

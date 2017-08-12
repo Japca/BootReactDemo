@@ -32,7 +32,9 @@ public class Character {
         this.description = description;
         this.email = email;
         this.created = created;
+
     }
+
 
     public Long getId() {
         return id;

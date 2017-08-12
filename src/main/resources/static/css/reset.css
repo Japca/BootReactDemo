@@ -22,6 +22,7 @@ time, mark, audio, video {
     font-size: 100%;
     font: inherit;
     vertical-align: baseline;
+    font-family: RostockKaligraph, Bellefair, serif;
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,
@@ -73,6 +74,12 @@ table {
 
 .clear:after {
     clear: both;
+}
+
+
+@font-face {
+    font-family: RostockKaligraph;
+    src: url("../fonts/RostockKaligraph.ttf");
 }
 
 /*Image float grid*/
