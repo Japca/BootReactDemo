@@ -8,7 +8,7 @@ import { reducers } from './Reducer/index.js';
 import ReduxPromise from 'redux-promise';
 import reset from '../static/css/reset.css';
 
-
+import   getIpAddresses from 'get-ip-addresses';
 
 const createStoreWithMiddleware = compose(
     applyMiddleware(ReduxPromise),
