@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {withRouter} from 'react-router-dom';
-import {ROOT, PAGE_LIST, PAGE_TABLE, PAGE_3, PAGE_4} from '../Layout/Layout';
+import {ROOT, PAGE_LIST, PAGE_TABLE, PLAYER, PAGE_4} from '../Layout/Layout';
 import styles from './navigator.css'
 
 class Navigator extends Component {
@@ -21,7 +21,7 @@ class Navigator extends Component {
                     <div className={styles.reactLogo}><img src="img/reactLogo/reactLogo.png"/></div>
                     <li><a onClick={() => this.handleSelect(PAGE_LIST)} className={this.isSelected(PAGE_LIST)}>List</a></li>
                     <li><a onClick={() => this.handleSelect(PAGE_TABLE)} className={this.isSelected(PAGE_TABLE)}>Table</a></li>
-                    <li><a onClick={() => this.handleSelect(PAGE_3)} className={this.isSelected(PAGE_3)}>Page 3</a></li>
+                    <li><a onClick={() => this.handleSelect(PLAYER)} className={this.isSelected(PLAYER)}>Player</a></li>
                     <li><a onClick={() => this.handleSelect(PAGE_4)} className={this.isSelected(PAGE_4)}>page 4</a></li>
                 </ul>
             </div>
@@ -42,8 +42,8 @@ class Navigator extends Component {
             case PAGE_TABLE :
                 push(PAGE_TABLE);
                 break;
-            case PAGE_3 :
-                push(PAGE_3);
+            case PLAYER :
+                push(PLAYER);
                 break;
             case PAGE_4:
                 push(PAGE_4);

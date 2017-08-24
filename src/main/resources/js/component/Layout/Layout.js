@@ -6,7 +6,7 @@ import styles from './layout.css';
 
 export const PAGE_LIST = '/list';
 export const PAGE_TABLE = '/table';
-export const PAGE_3 = '/page3';
+export const PLAYER = '/player';
 export const PAGE_4 = '/page4';
 export const ROOT = '/';
 
