@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {withRouter} from 'react-router-dom';
-import {ROOT, PAGE_LIST, PAGE_TABLE, PLAYER, PAGE_4} from '../Layout/Layout';
+import {ROOT, PAGE_LIST, PAGE_TABLE, PLAYER, BUBBLE} from '../Layout/Layout';
 import styles from './navigator.css'
 
 class Navigator extends Component {
@@ -22,7 +22,7 @@ class Navigator extends Component {
                     <li><a onClick={() => this.handleSelect(PAGE_LIST)} className={this.isSelected(PAGE_LIST)}>List</a></li>
                     <li><a onClick={() => this.handleSelect(PAGE_TABLE)} className={this.isSelected(PAGE_TABLE)}>Table</a></li>
                     <li><a onClick={() => this.handleSelect(PLAYER)} className={this.isSelected(PLAYER)}>Player</a></li>
-                    <li><a onClick={() => this.handleSelect(PAGE_4)} className={this.isSelected(PAGE_4)}>page 4</a></li>
+                    <li><a onClick={() => this.handleSelect(BUBBLE)} className={this.isSelected(BUBBLE)}>Bubbles</a></li>
                 </ul>
             </div>
         );
@@ -45,8 +45,8 @@ class Navigator extends Component {
             case PLAYER :
                 push(PLAYER);
                 break;
-            case PAGE_4:
-                push(PAGE_4);
+            case BUBBLE:
+                push(BUBBLE);
                 break;
             default :
                 add(ROOT);

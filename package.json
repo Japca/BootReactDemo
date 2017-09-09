@@ -37,7 +37,7 @@
     "webpack-dev-server": "^2.5.1"
   },
   "scripts": {
-    "dev": "webpack-dev-server --content-base src/main/resources/static --inline --hot",
+    "dev": "webpack-dev-server --content-base src/main/resources/public --inline --hot",
     "clean": "rimraf src/main/resources/public",
     "build": "npm run clean && webpack -p --progress --display-modules ",
     "mavenBuild": "webpack -p --progress --display-modules ",

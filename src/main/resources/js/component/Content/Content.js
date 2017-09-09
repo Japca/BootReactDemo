@@ -7,10 +7,10 @@ import React from 'react';
 import SimpleTable from '../../container/Table/SimpleTable';
 import ItemsLayout from '../../container/ItemsLayout/ItemsLayout';
 import Player from '../Player/Player';
-import Page4 from '../../component/Page4';
+import Bubble from '../Bubble/Bubble';
 import {Route, Switch} from 'react-router-dom';
 import styles from './content.css';
-import {ROOT, PAGE_LIST, PAGE_TABLE, PLAYER, PAGE_4} from '../Layout/Layout';
+import {ROOT, PAGE_LIST, PAGE_TABLE, PLAYER, BUBBLE} from '../Layout/Layout';
 
 
 const Content = () => {
@@ -20,7 +20,7 @@ const Content = () => {
                     <Route path={PAGE_LIST} component={ItemsLayout}/>
                     <Route path={PAGE_TABLE} component={SimpleTable}/>
                     <Route path={PLAYER} component={Player}/>
-                    <Route path={PAGE_4} component={Page4}/>
+                    <Route path={BUBBLE} component={Bubble}/>
                     <Route exact path={ROOT} component={ItemsLayout}/>
                 </Switch>
             </div>

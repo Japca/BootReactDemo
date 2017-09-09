@@ -23,6 +23,11 @@ public class ReactBootDemo {
         SpringApplication reactBoot = new SpringApplication(ReactBootDemo.class);
         reactBoot.addListeners(new ApplicationPidFileWriter("app.pid"));
         reactBoot.run(args);
+        ReactBootDemo.justTest();
+    }
+
+    public static void justTest() {
+
     }
 
     @PostConstruct

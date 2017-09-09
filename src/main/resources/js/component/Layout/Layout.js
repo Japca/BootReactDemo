@@ -7,7 +7,7 @@ import styles from './layout.css';
 export const PAGE_LIST = '/list';
 export const PAGE_TABLE = '/table';
 export const PLAYER = '/player';
-export const PAGE_4 = '/page4';
+export const BUBBLE = '/bubble';
 export const ROOT = '/';
 
 const Layout = () => {

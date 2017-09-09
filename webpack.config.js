@@ -10,8 +10,6 @@ const VENDOR_LIBS = [
     'lodash', 'axios',
 ];
 
-const resources = 'src/main/resources/';
-
 module.exports = {
     entry: {
         bundle: './src/main/resources/js/index.js',
@@ -74,3 +72,4 @@ if (process.env.NODE_ENV === 'production') {
         })
     ]);
 }
+
