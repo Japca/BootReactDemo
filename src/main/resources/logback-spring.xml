@@ -2,11 +2,6 @@
 <configuration>
 
     <include resource="org/springframework/boot/logging/logback/base.xml"/>
-    <!--<jmxConfigurator/>-->
-
-    <!--<logger name="javamelody">-->
-        <!--<level value="warn" />-->
-    <!--</logger>-->
 
     <appender name="FILE-AUDIT"
               class="ch.qos.logback.core.rolling.RollingFileAppender">

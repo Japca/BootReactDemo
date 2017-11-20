@@ -18,6 +18,7 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, 'src/main/resources/public'),
         filename: '[name].[hash].js',
+        publicPath: 'http://localhost:8080/src/main/resources/public'
     },
     module: {
         rules: [
@@ -36,7 +37,16 @@ module.exports = {
     },
 
     devServer: {
-        historyApiFallback: true
+        historyApiFallback: true,
+        inline: true,
+        hot: true,
+        contentBase: "src/main/resources/public",
+        proxy: {
+            '/': {
+                target: 'http://localhost:8080/',
+                secure: false
+            }
+        }
     },
 
     devtool: '#eval-source-map',

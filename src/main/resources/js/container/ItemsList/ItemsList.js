@@ -26,6 +26,10 @@ class ItemsList extends Component {
     }
 
     renderCharacters = () => {
+       let val= this.props.characters;
+        debugger;
+        ajps;
+
         return values(this.props.characters).map(character => {
             return <div key={character.id} className={styles.item}>
                 <div>
