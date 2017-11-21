@@ -2,6 +2,7 @@ const webpack = require('webpack')
 const path = require('path')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 //const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 const VENDOR_LIBS = [
     'react', 'react-dom', 'react-redux', 'react-bootstrap', 'react-router-dom',
@@ -51,6 +52,7 @@ module.exports = {
     devtool: '#eval-source-map',
 
     plugins: [
+        new CleanWebpackPlugin(['src/main/resources/public']),
         new ExtractTextPlugin('style.css'),
         new webpack.optimize.CommonsChunkPlugin({
             names: ['vendor', 'manifest']

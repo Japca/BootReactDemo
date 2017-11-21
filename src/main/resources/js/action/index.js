@@ -5,7 +5,7 @@ export const EDIT_CHARACTER  = 'EDIT_CHARACTER'
 export const DELETE_CHARACTER = 'DELETE_CHARACTER'
 export const SORT_BY = 'SORT_BY'
 
-const ROOT = `http://localhost:8080/`
+const ROOT = 'http://localhost:8080/'
 export function fetchCharacters() {
     return {
         type: FETCH_CHARACTERS,

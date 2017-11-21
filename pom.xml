@@ -144,22 +144,12 @@
                     </execution>
 
                     <execution>
-                        <id>npm clean</id>
-                        <goals>
-                            <goal>npm</goal>
-                        </goals>
-                        <configuration>
-                            <arguments>run clean</arguments>
-                        </configuration>
-                    </execution>
-
-                    <execution>
                         <id>npm build</id>
                         <goals>
                             <goal>npm</goal>
                         </goals>
                         <configuration>
-                            <arguments>run mavenBuild</arguments>
+                            <arguments>run build</arguments>
                         </configuration>
                     </execution>
 
