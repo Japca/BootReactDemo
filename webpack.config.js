@@ -1,14 +1,13 @@
-const debug = process.env.NODE_ENV !== 'production';
-const webpack = require('webpack');
-const path = require('path');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const webpack = require('webpack')
+const path = require('path')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+//const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 const VENDOR_LIBS = [
     'react', 'react-dom', 'react-redux', 'react-bootstrap', 'react-router-dom',
     'redux', 'redux-promise', 'redux-form',
     'lodash', 'axios',
-];
+]
 
 module.exports = {
     entry: {
@@ -24,7 +23,7 @@ module.exports = {
         rules: [
             {
                 test: /\.jsx?$/,
-                exclude: /(node_modules)/,
+                exclude: /(node_modules|node)/,
                 use: 'babel-loader'
             },
             {
@@ -60,11 +59,11 @@ module.exports = {
             template: 'src/main/resources/templates/index.html'
         })
     ],
-};
+}
 
 
 if (process.env.NODE_ENV === 'production') {
-    module.exports.devtool = '#cheap-source-map';
+    module.exports.devtool = '#cheap-source-map'
     module.exports.plugins = (module.exports.plugins || module.plugins).concat([
         new webpack.DefinePlugin({
             'process.env': {
@@ -80,6 +79,6 @@ if (process.env.NODE_ENV === 'production') {
         new webpack.LoaderOptionsPlugin({
             minimize: true
         })
-    ]);
+    ])
 }
 

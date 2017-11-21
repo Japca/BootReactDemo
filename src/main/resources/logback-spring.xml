@@ -14,7 +14,7 @@
 
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <!-- rollover daily -->
-            <fileNamePattern>${logs}/archive/reactBoot%d{yyyy-MM-dd}.%i.log.gz
+            <fileNamePattern>logs/archive/reactBoot%d{yyyy-MM-dd}.%i.log.gz
             </fileNamePattern>
             <MaxHistory>5</MaxHistory>
             <timeBasedFileNamingAndTriggeringPolicy

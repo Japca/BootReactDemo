@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React from 'react' 
 import style from './player.css'
 // import SplitLayout from './SplitLayout/SplitLayout';
 
@@ -10,7 +10,7 @@ const Player = () => {
             <div className={style.leftBox}></div>
             <div className={style.rightBox}></div>
         </div>
-    );
-};
+    )
+}
 
-export default Player;
+export default Player

@@ -14,10 +14,9 @@ const ARROW_DOWN = 'arrow-down';
 const CHARACTER_PROPERTIES = [CREATED, 'name', 'profession', 'description', 'email'];
 
 
-
-export var Sort = {
-  order:  SORT_DESC,
-  type: CREATED
+export const Sort = {
+    order: SORT_DESC,
+    type: CREATED
 };
 
 class ItemsHandler extends Component {

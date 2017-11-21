@@ -4,8 +4,7 @@ module.exports = {
         "commonjs": true,
         "es6": true
     },
-    "extends": "eslint:recommended",
-
+    // "extends": ["eslint:recommended"],
     "parserOptions": {
         "ecmaVersion": 6,
         "ecmaFeatures": {
@@ -14,9 +13,8 @@ module.exports = {
         },
         "sourceType": "module"
     },
-    "plugins": [
+     "plugins": [
         "react",
-        "class-property"
     ],
     "rules": {
        "linebreak-style": [
@@ -24,12 +22,14 @@ module.exports = {
             "unix"
         ],
         "quotes": [
-            "error",
+            "warn",
             "single"
         ],
         "semi": [
             "warn",
-            "always"
+            "never"
         ],
+        "no-unused-variable": [true, {"ignore-pattern": "^_"}]
+
     }
 };

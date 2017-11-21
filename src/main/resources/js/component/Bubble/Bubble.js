@@ -1,8 +1,5 @@
-import React, { Component } from 'react';
-import styles from './Bubble.css';
-
-
-const canvas = document.getElementById('bubbleCanvas');
+import React, { Component } from 'react'
+import styles from './Bubble.css'
 
 class Bubble extends Component {
 
@@ -14,9 +11,9 @@ class Bubble extends Component {
                     ctx.fill();
                 </canvas>
             </div>
-        );
+        )
     }
 
 }
 
-export default Bubble;
+export default Bubble
