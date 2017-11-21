@@ -26,6 +26,7 @@
     "babel-preset-stage-2": "^6.3.13",
     "css-loader": "^0.28.4",
     "eslint": "^4.2.0",
+    "eslint-plugin-react": "^7.5.1",
     "extract-text-webpack-plugin": "^2.1.2",
     "file-loader": "^0.11.2",
     "flow-bin": "^0.59.0",
@@ -50,20 +51,6 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Japca/BootReactDemo.git"
-  },
-  "eslintConfig": {
-    "parserOptions": {
-      "ecmaVersion": 6,
-      "sourceType": "module",
-      "ecmaFeatures": {
-        "jsx": true,
-        "allowArrowFunctions": true,
-        "function": "declaration"
-      }
-    },
-    "rules": {
-      "semi": 2
-    }
   },
   "author": "Jakub Krhovják",
   "license": "ISC",

@@ -11,8 +11,7 @@ import reset from '../static/css/reset.css';
 
 const createStoreWithMiddleware = compose(
     applyMiddleware(ReduxPromise),
-    window.devToolsExtension ? window.devToolsExtension() : f => f)
-(createStore);
+    window.devToolsExtension ? window.devToolsExtension() : f => f)(createStore);
 
 const store = createStoreWithMiddleware(reducers);
 export default store;
@@ -25,20 +24,7 @@ ReactDOM.render(
     app);
 
 
-function foo(x: ?number): string {
-    if (x) {
-        return x;
-    }
-    return "default string";
-}
 
-function test() {
-    foo(5);
-    let a = 'ahoj';
-    let b = 1 * a;
-    console.info(b);
-
-}
 
 
 

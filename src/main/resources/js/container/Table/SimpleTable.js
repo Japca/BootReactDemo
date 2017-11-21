@@ -1,4 +1,3 @@
-/* eslint-disable semi */
 /**
  * Created by cor on 4/5/17.
  *
