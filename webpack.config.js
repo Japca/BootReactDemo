@@ -57,7 +57,8 @@ module.exports = {
         }),
         new HtmlWebpackPlugin({
             template: 'src/main/resources/templates/index.html'
-        })
+        }),
+        new webpack.optimize.ModuleConcatenationPlugin()
     ],
 }
 

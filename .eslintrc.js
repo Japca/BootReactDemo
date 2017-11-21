@@ -29,7 +29,5 @@ module.exports = {
             "warn",
             "never"
         ],
-        "no-unused-variable": [true, {"ignore-pattern": "^_"}]
-
     }
 };
