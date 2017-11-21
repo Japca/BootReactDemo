@@ -1,3 +1,4 @@
+// @Flow
 import React from "react";
 import ReactDOM from "react-dom";
 import Layout from "./component/Layout/Layout";
@@ -22,6 +23,22 @@ ReactDOM.render(
        <Layout />
     </Provider>,
     app);
+
+
+function foo(x: ?number): string {
+    if (x) {
+        return x;
+    }
+    return "default string";
+}
+
+function test() {
+    foo(5);
+    let a = 'ahoj';
+    let b = 1 * a;
+    console.info(b);
+
+}
 
 
 

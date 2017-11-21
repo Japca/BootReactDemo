@@ -17,8 +17,8 @@ module.exports = {
     },
     output: {
         path: path.resolve(__dirname, 'src/main/resources/public'),
-        filename: '[name].[hash].js',
-        publicPath: 'http://localhost:8080/src/main/resources/public'
+        filename: '[name].[hash].js'
+
     },
     module: {
         rules: [
@@ -40,7 +40,7 @@ module.exports = {
         historyApiFallback: true,
         inline: true,
         hot: true,
-        contentBase: "src/main/resources/public",
+        contentBase: 'src/main/resources/public',
         proxy: {
             '/': {
                 target: 'http://localhost:8080/',

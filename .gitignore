@@ -22,3 +22,11 @@ nbbuild/
 dist/
 nbdist/
 .nb-gradle/
+app.pid
+etc/
+logs/
+logs_IS_UNDEFINED/
+node/
+node_modules/
+npm-debug.log
+src/main/resources/public/

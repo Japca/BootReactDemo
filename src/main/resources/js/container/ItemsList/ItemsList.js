@@ -1,10 +1,11 @@
+
 /**
  * Created by cor on 7/16/17.
  */
 
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import styles from './itemsList.css';
-import {connect} from 'react-redux';
+import { connect }  from 'react-redux';
 import {fetchCharacters, deleteCharacter} from '../../action/index';
 
 import { values } from 'lodash';
@@ -26,10 +27,6 @@ class ItemsList extends Component {
     }
 
     renderCharacters = () => {
-       let val= this.props.characters;
-        debugger;
-        ajps;
-
         return values(this.props.characters).map(character => {
             return <div key={character.id} className={styles.item}>
                 <div>
