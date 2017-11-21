@@ -57,7 +57,3 @@ function mapStateToProps({ characters }) {
 }
 
 export default connect(mapStateToProps, { fetchCharacters } )(SimpleTable);
-
-
-
-

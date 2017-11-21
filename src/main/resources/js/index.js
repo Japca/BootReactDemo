@@ -23,6 +23,16 @@ ReactDOM.render(
     </Provider>,
     app)
 
+function f() {
+    console.info('sss')
+    console.info('dsd')
+    console.info('dddfdf')
+    console.info('dd')
+    console.warn('ss')
+
+
+}
+
 
 
 

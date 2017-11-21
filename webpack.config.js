@@ -10,6 +10,8 @@ const VENDOR_LIBS = [
     'lodash', 'axios',
 ]
 
+const bundleDir = './src/main/resources/public'
+
 module.exports = {
     entry: {
         bundle: './src/main/resources/js/index.js',
@@ -40,7 +42,8 @@ module.exports = {
         historyApiFallback: true,
         inline: true,
         hot: true,
-        contentBase: 'src/main/resources/public',
+        contentBase: bundleDir,
+        host: 'localhost',
         proxy: {
             '/': {
                 target: 'http://localhost:8080/',
@@ -52,7 +55,7 @@ module.exports = {
     devtool: '#eval-source-map',
 
     plugins: [
-        new CleanWebpackPlugin(['src/main/resources/public']),
+        new CleanWebpackPlugin([bundleDir]),
         new ExtractTextPlugin('style.css'),
         new webpack.optimize.CommonsChunkPlugin({
             names: ['vendor', 'manifest']
@@ -60,7 +63,8 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: 'src/main/resources/templates/index.html'
         }),
-        new webpack.optimize.ModuleConcatenationPlugin()
+
+        new webpack.HotModuleReplacementPlugin()
     ],
 }
 
@@ -81,7 +85,9 @@ if (process.env.NODE_ENV === 'production') {
         }),
         new webpack.LoaderOptionsPlugin({
             minimize: true
-        })
+        }),
+
+        new webpack.optimize.ModuleConcatenationPlugin(),
     ])
 }
 

@@ -7,3 +7,7 @@ export const reducers = combineReducers({
     form: formReducer
 })
 
+function d() {
+
+    console.info('ddggh')
+}
