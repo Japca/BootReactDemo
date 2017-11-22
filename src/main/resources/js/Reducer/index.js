@@ -10,4 +10,7 @@ export const reducers = combineReducers({
 function d() {
 
     console.info('ddggh')
+    console.info('dddfsdgcvc')
+    console.info('dd')
+
 }

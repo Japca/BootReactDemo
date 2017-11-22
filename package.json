@@ -34,8 +34,10 @@
     "html-webpack-plugin": "^2.29.0",
     "install": "^0.10.1",
     "npm": "^5.1.0",
+    "react-css-modules": "^4.7.1",
     "react-rpm": "^1.0.1",
     "rimraf": "^2.6.1",
+    "style-loader": "^0.19.0",
     "webpack": "^3.8.1",
     "webpack-bundle-analyzer": "^2.8.3",
     "webpack-dev-server": "^2.5.1"
@@ -45,6 +47,7 @@
     "dev": "webpack-dev-server",
     "start": "webpack-dev-server --open",
     "build": "webpack -p --progress --display-modules",
+    "watch": "webpack --watch",
     "test": "echo \"Error: no test specified\" && exit 1",
     "flow": "flow",
     "buildLib": "babel src/ -d lib/"
