@@ -6,3 +6,5 @@ export const reducers = combineReducers({
     characters: CharacterReducer,
     form: formReducer
 })
+
+
