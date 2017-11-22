@@ -3,9 +3,10 @@
  */
 
 import React, { Component } from 'react';
-import styles from './itemsList.css';
 import { connect }  from 'react-redux';
 import {fetchCharacters, deleteCharacter} from '../../action/index';
+import CSSModules from 'react-css-modules';
+import styles from './itemsList.css';
 
 import { values } from 'lodash';
 
@@ -47,12 +48,12 @@ class ItemsList extends Component {
 
     addOverlay = (character) => {
        return (
-           <div className={styles.buttonLayout}>
+           <div styleName="buttonLayout">
                <a className={[styles.itemButton, "showTooltip"].join(' ')} title="Update Character"
                   onClick={() => this.props.initForm(character)}>
                    <i className='fa fa-pencil fa-lg'/>
                </a>
-               <a className={[styles.itemButton, "showTooltip"].join(' ')} title="Delete Character"
+               <a styleName="itemButton sho" className={[styles.itemButton, "showTooltip"].join(' ')} title="Delete Character"
                   onClick={() => this.props.deleteCharacter(character)}>
                    <i className='fa fa-times fa-lg'/>
                </a>

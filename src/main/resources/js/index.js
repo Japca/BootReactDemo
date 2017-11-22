@@ -23,10 +23,6 @@ ReactDOM.render(
     </Provider>,
     app)
 
-function f() {
-    console.info('sss')
-    console.warn('aa')
-}
 
 
 

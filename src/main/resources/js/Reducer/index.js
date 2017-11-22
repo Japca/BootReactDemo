@@ -6,11 +6,3 @@ export const reducers = combineReducers({
     characters: CharacterReducer,
     form: formReducer
 })
-
-function d() {
-
-    console.info('ddggh')
-    console.info('dddfsdgcvc')
-    console.info('dd')
-
-}
