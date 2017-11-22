@@ -15,12 +15,12 @@ const bundleDir = './src/main/resources/public'
 
 module.exports = {
     entry: {
-        bundle: './src/main/resources/js/index.js',
+        main: './src/main/resources/js/index.js',
         vendor: VENDOR_LIBS
     },
     output: {
         path: path.resolve(__dirname, bundleDir),
-        filename: '[name].[hash].js'
+        filename: '[name].[chunkhash].js'
 
     },
     module: {
@@ -40,21 +40,22 @@ module.exports = {
         ],
     },
 
+    devtool:'source-map',
     plugins: [
         new CleanWebpackPlugin([bundleDir]),
         new ExtractTextPlugin({filename: 'style.css', allChunks: true}),
         new webpack.optimize.CommonsChunkPlugin({
             names: ['vendor', 'manifest']
         }),
+
         new HtmlWebpackPlugin({
             template: 'src/main/resources/templates/index.html'
         }),
 
         new webpack.DefinePlugin({
-            'process.env': {
-                NODE_ENV: '"production"'
-            }
+            'process.env.NODE_ENV': JSON.stringify('production')
         }),
+
         new webpack.optimize.UglifyJsPlugin({
             sourceMap: true,
             compress: {
