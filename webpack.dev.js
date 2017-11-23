@@ -1,5 +1,6 @@
 const path = require('path')
 const webpack = require('webpack')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 const bundleDir = './src/main/resources/public'
 
 module.exports = {
@@ -35,7 +36,7 @@ module.exports = {
         historyApiFallback: true,
         inline: true,
         hot: true,
-        contentBase: bundleDir,
+        contentBase: path.join(__dirname, bundleDir),
         host: 'localhost',
         proxy: {
             '/': {
@@ -46,6 +47,9 @@ module.exports = {
     },
 
     plugins: [
+        new HtmlWebpackPlugin({
+            template: 'src/main/resources/templates/index.html'
+        }),
         new webpack.HotModuleReplacementPlugin()
     ]
 }
