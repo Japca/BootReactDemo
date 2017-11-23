@@ -48,12 +48,12 @@ class ItemsList extends Component {
 
     addOverlay = (character) => {
        return (
-           <div styleName="buttonLayout">
+           <div className={styles.buttonLayout}>
                <a className={[styles.itemButton, "showTooltip"].join(' ')} title="Update Character"
                   onClick={() => this.props.initForm(character)}>
                    <i className='fa fa-pencil fa-lg'/>
                </a>
-               <a styleName="itemButton sho" className={[styles.itemButton, "showTooltip"].join(' ')} title="Delete Character"
+               <a className={[styles.itemButton, "showTooltip"].join(' ')} title="Delete Character"
                   onClick={() => this.props.deleteCharacter(character)}>
                    <i className='fa fa-times fa-lg'/>
                </a>
