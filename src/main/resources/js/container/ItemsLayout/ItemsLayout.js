@@ -145,11 +145,11 @@ class ItemsLayout extends Component {
     }
 
     renderField(field) {
-        const {meta : { valid, error }, props } = field
+        const {meta : { valid, error }, props : { type, placeholder }, id, label, input } = field
         return (
-            <FormGroup controlId={field.id} validationState={valid === false ? 'error' : null}>
-                <ControlLabel>{field.label}</ControlLabel>
-                <FormControl type={props.type}  placeholder={props.placeholder} {...field.input} />
+            <FormGroup controlId={id} validationState={valid === false ? 'error' : null}>
+                <ControlLabel>{label}</ControlLabel>
+                <FormControl type={type}  placeholder={placeholder} {...input} />
                 <span className={styles.error}>{ error && <i class="fa fa-exclamation" aria-hidden="true"></i>} {error}</span>
             </FormGroup>
         );
