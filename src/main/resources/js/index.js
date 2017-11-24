@@ -8,7 +8,7 @@ import { reducers } from './Reducer/index.js'
 import ReduxPromise from 'redux-promise'
 import reset from '../static/css/reset.css'
 
-const createStoreWithMiddleware = compose(applyMiddleware(ReduxPromise)) (createStore)
+const createStoreWithMiddleware = applyMiddleware(ReduxPromise)(createStore)
 
 const app = document.getElementById('app')
 ReactDOM.render(
@@ -16,3 +16,4 @@ ReactDOM.render(
       <Layout />
      </Provider>,
     app)
+
