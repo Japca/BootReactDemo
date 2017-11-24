@@ -6,3 +6,7 @@
     text-align: center;
     margin: auto;
 }
+
+.error {
+    color: #a94442;
+}

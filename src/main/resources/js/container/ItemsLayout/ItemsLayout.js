@@ -15,6 +15,37 @@ import {Field, reduxForm} from 'redux-form';
 import ItemsHandler from '../../container/ItemsHandler/ItemsHandler'
 import ItemsList from "../ItemsList/ItemsList";
 
+const required = value => (value ? undefined : 'Required')
+const NAME = 'name'
+const PROFESSION = 'profession'
+const DESCRIPTION = 'description'
+const EMAIL ='email'
+const REQUIRED = 'Required'
+
+const validate = values => {
+    const errors ={}
+    const { email, description, name , profession } = values
+     if(!email)  {
+        errors.email = REQUIRED
+    }else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
+        errors.email = 'Invalid email address'
+    }
+
+    if(!description) {
+        errors.description = REQUIRED
+    }
+
+    if(!name) {
+        errors.name = REQUIRED
+    }
+
+    if(!profession) {
+        errors.profession = REQUIRED
+    }
+
+    return errors;
+}
+
 class ItemsLayout extends Component {
 
     constructor(props) {
@@ -57,28 +88,28 @@ class ItemsLayout extends Component {
                 <Modal.Body>
                     <Field name='name'
                            component={this.renderField}
-                           props={this.inputProps('formControlsName', 'Name', {
+                           props={this.inputProps(NAME, 'Name', {
                                type: 'text',
                                placeholder: 'Enter Name'
                            })}
                     />
                     <Field name='profession'
                            component={this.renderField}
-                           props={this.inputProps('formControlsProfession', 'profession', {
+                           props={this.inputProps(PROFESSION, 'Profession', {
                                type: 'text',
                                placeholder: 'Enter Profession'
                            })}
                     />
                     <Field name='description'
                            component={this.renderField}
-                           props={this.inputProps('formControlsDescription', 'Description', {
+                           props={this.inputProps(DESCRIPTION, 'Description', {
                                type: 'text',
                                placeholder: 'Enter Description'
                            })}
                     />
                     <Field name='email'
                            component={this.renderField}
-                           props={this.inputProps('formControlsEmail', 'Email', {
+                           props={this.inputProps(EMAIL, 'Email', {
                                type: 'text',
                                placeholder: 'Enter Email'
                            })}
@@ -114,11 +145,12 @@ class ItemsLayout extends Component {
     }
 
     renderField(field) {
-        let props = field.props;
+        const {meta : { valid, error }, props } = field
         return (
-            <FormGroup controlId={field.id}>
+            <FormGroup controlId={field.id} validationState={valid === false ? 'error' : null}>
                 <ControlLabel>{field.label}</ControlLabel>
                 <FormControl type={props.type}  placeholder={props.placeholder} {...field.input} />
+                <span className={styles.error}>{ error && <i class="fa fa-exclamation" aria-hidden="true"></i>} {error}</span>
             </FormGroup>
         );
     }
@@ -130,6 +162,10 @@ class ItemsLayout extends Component {
             props : props
         };
     }
+
+    validateForm(field) {
+        return ''
+    }
 }
 
 
@@ -138,7 +174,8 @@ function mapStateToProps({ characters }) {
 }
 
 export default reduxForm({
-    form: 'editCharacterForm'
+    form: 'editCharacterForm',
+    validate
 })
 (connect(mapStateToProps, { editCharacter })(ItemsLayout));
 
